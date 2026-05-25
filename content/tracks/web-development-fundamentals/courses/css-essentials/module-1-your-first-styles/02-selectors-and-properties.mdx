@@ -1,0 +1,160 @@
+---
+title: "Selectors & Properties"
+slug: "selectors-and-properties"
+module: "Your First Styles"
+moduleSlug: "your-first-styles"
+course: "CSS Essentials"
+courseSlug: "css-essentials"
+order: 2
+estimatedMinutes: 8
+---
+
+# Selectors & Properties
+
+<Hook>
+In the last lesson, you changed the color of an `h1`. But what if you want to style just *one* paragraph on a page with five paragraphs? Or target only the navigation links but not the body links? CSS selectors are like GPS coordinates for your styles — they tell the browser *exactly* which elements to style.
+</Hook>
+
+## The Concept
+
+A **selector** is the part of a CSS rule that picks which HTML elements get styled. There are three core selectors you need to know:
+
+### 1. Element Selectors
+
+Target **all** elements of a type. Write the tag name with no symbols:
+
+`p { }` — styles every `<p>` on the page. `h1 { }` — styles every `<h1>`. `a { }` — styles every link.
+
+This is like saying *"paint every door in the building blue."*
+
+### 2. Class Selectors
+
+Target elements with a **specific class attribute**. Use a dot (`.`) before the class name:
+
+`.highlight { }` — styles every element that has `class="highlight"`.
+
+Classes are **reusable**. You can apply the same class to as many elements as you want. In your HTML, you add a class like this: `<p class="highlight">`.
+
+This is like saying *"paint only the doors with a 'VIP' sticker blue."*
+
+### 3. ID Selectors
+
+Target **one specific element**. Use a hash (`#`) before the ID name:
+
+`#hero { }` — styles the single element that has `id="hero"`.
+
+IDs must be **unique** on a page — only one element can have a given ID. You already used IDs in your landing page: `<section id="about">`, `<section id="services">`, etc.
+
+This is like saying *"paint only the door to Room 401 blue."*
+
+### The Specificity Hierarchy
+
+What happens when multiple rules target the same element? The **most specific** selector wins:
+
+**ID** (#) beats **Class** (.) beats **Element** (tag name).
+
+Think of it as a ranking system: IDs are VIPs, classes are club members, and element selectors are the general public. VIPs always get served first.
+
+## The Syntax
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Selectors Demo</title>
+    <style>
+        /* Element selector — targets ALL paragraphs */
+        p {
+            color: gray;
+        }
+
+        /* Class selector — targets elements with class="intro" */
+        .intro {
+            color: blue;
+            font-weight: bold;
+        }
+
+        /* ID selector — targets the ONE element with id="about" */
+        #about {
+            color: darkgreen;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <p class="intro">This paragraph has the "intro" class — it's blue and bold.</p>
+    <p>This is a plain paragraph — it's gray.</p>
+    <p class="intro">This also has the "intro" class — blue and bold again.</p>
+    <p id="about">This has the "about" ID — it's dark green and larger.</p>
+</body>
+</html>
+```
+
+Notice how the two `.intro` paragraphs share the same class — that's the power of reusable classes. The `#about` paragraph has its own unique ID, so it gets its own unique style.
+
+Also notice the plain `<p>` gets the gray color from the element selector, but the `.intro` and `#about` paragraphs override it because classes and IDs are more specific.
+
+## Try It Yourself
+
+<CodeExercise language="html">
+<Instructions>
+Inside the empty `<style>` tag, write three CSS rules:
+1. Make **all paragraphs** the color `gray`
+2. Make the **`.intro`** paragraph the color `blue`
+3. Make the **`#special`** paragraph the color `red`
+</Instructions>
+
+<StartingCode>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Selector Practice</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <p class="intro">I am the intro paragraph.</p>
+    <p>I am a regular paragraph.</p>
+    <p id="special">I am the special paragraph.</p>
+</body>
+</html>
+</StartingCode>
+
+<Solution>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Selector Practice</title>
+    <style>
+        p {
+            color: gray;
+        }
+
+        .intro {
+            color: blue;
+        }
+
+        #special {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <p class="intro">I am the intro paragraph.</p>
+    <p>I am a regular paragraph.</p>
+    <p id="special">I am the special paragraph.</p>
+</body>
+</html>
+</Solution>
+
+<Validation>
+The first paragraph should appear blue (class wins over element). The second paragraph should appear gray (element selector). The third paragraph should appear red (ID wins over everything). This demonstrates the specificity cascade in action.
+</Validation>
+</CodeExercise>
+
+## Recap
+
+- ✅ Element selectors target all matching tags — `p { }` styles every paragraph
+- ✅ Class selectors (`.name`) target elements with that class — reusable across many elements
+- ✅ ID selectors (`#name`) target one unique element — highest specificity wins

@@ -1,0 +1,70 @@
+---
+title: "The Anchor Tag"
+slug: "the-anchor-tag"
+module: "Media & Links"
+moduleSlug: "media-and-links"
+course: "HTML Foundations"
+courseSlug: "html-foundations"
+order: 8
+estimatedMinutes: 7
+---
+
+# The Anchor Tag
+
+<Hook>
+The "Hyper" in HyperText Markup Language? It refers to hyperlinks — the ability to click a piece of text and teleport to another page. Links are the connective tissue of the entire internet. Without them, every website would be a lonely island. Let's connect your page to the world.
+</Hook>
+
+## The Concept
+
+The `<a>` tag — short for **anchor** — is how you create clickable links in HTML. It's one of the most important tags you'll ever learn. Every time you click a link on the web, an anchor tag is doing the work behind the scenes.
+
+The `<a>` tag has one essential attribute: **`href`**. It stands for **Hypertext Reference**, and it tells the browser *where* to go when someone clicks the link. Think of `href` as the address you punch into a GPS — it's the destination.
+
+The text you place *between* the opening `<a>` and closing `</a>` tags becomes the **link text** — the clickable words the user sees on screen.
+
+There are two types of URLs you can use in `href`:
+
+- **Absolute URLs** — Full web addresses like `https://www.google.com`. These point to pages on *other* websites.
+- **Relative URLs** — Shorter paths like `/about` or `contact.html`. These point to pages within *your own* site.
+
+By default, links are styled **blue and underlined** — you'll learn to change that later with CSS. And by default, clicking a link opens the new page in the **same tab**.
+
+## The Syntax
+
+```html
+<a href="https://www.google.com">Visit Google</a>
+```
+
+Let's break this down piece by piece:
+
+- **`<a>`** — The opening anchor tag. This tells the browser "a link starts here."
+- **`href="https://www.google.com"`** — The `href` attribute with a URL as its value. This is where the link goes.
+- **`Visit Google`** — The link text. This is what the user sees and clicks.
+- **`</a>`** — The closing tag. Everything between `<a>` and `</a>` becomes clickable.
+
+## Try It Yourself
+
+<CodeExercise language="html">
+<Instructions>
+Turn the text "Click here to search" into a link that goes to `https://www.google.com`. Wrap the text inside an anchor tag with the correct `href` attribute.
+</Instructions>
+
+<StartingCode>
+<p>Click here to search</p>
+</StartingCode>
+
+<Solution>
+<p><a href="https://www.google.com">Click here to search</a></p>
+</Solution>
+
+<Validation>
+The text "Click here to search" should appear as a blue, underlined link. Clicking it should navigate to Google.
+</Validation>
+</CodeExercise>
+
+## Recap
+
+- ✅ The `<a>` tag creates hyperlinks — the foundation of web navigation
+- ✅ The `href` attribute tells the browser where the link goes
+- ✅ Link text should be descriptive — "Click here" is bad practice (say what the link does instead)

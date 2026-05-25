@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
+@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -127,4 +128,32 @@
   html {
     @apply font-sans;
   }
+}
+
+/* ── rehype-pretty-code: dual-theme syntax highlighting ─────────────────────
+   Dark theme is always visible in dark mode; light theme in light mode.
+   The [data-theme] attribute is added by rehype-pretty-code.           */
+[data-theme="light"] { display: none; }
+[data-theme="dark"]  { display: block; }
+
+.dark [data-theme="light"] { display: none; }
+.dark [data-theme="dark"]  { display: block; }
+
+:root:not(.dark) [data-theme="light"] { display: block; }
+:root:not(.dark) [data-theme="dark"]  { display: none; }
+
+/* Code block wrapper */
+[data-rehype-pretty-code-figure] pre {
+  @apply rounded-lg border border-border text-sm leading-relaxed overflow-x-auto;
+  padding: 1rem;
+}
+
+/* Inline code (inside prose) */
+:not(pre) > code {
+  @apply bg-muted px-1.5 py-0.5 rounded text-sm font-mono;
+}
+
+/* Highlighted lines */
+.highlighted-line {
+  @apply bg-primary/10 -mx-4 px-4 border-l-2 border-primary;
 }

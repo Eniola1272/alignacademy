@@ -1,0 +1,169 @@
+---
+title: "Text Styling"
+slug: "text-styling"
+module: "Typography & Spacing"
+moduleSlug: "typography-and-spacing"
+course: "CSS Essentials"
+courseSlug: "css-essentials"
+order: 6
+estimatedMinutes: 6
+---
+
+# Text Styling
+
+<Hook>
+You've picked the right font and set the sizes. But professional typography goes further — it's about the SPACE between lines, the ALIGNMENT of text, and the subtle transforms that turn ordinary text into polished design. These are the details that separate amateur pages from professional ones.
+</Hook>
+
+## The Concept
+
+Five CSS properties handle the finishing touches that make text feel *designed*, not just typed.
+
+### text-align
+
+Controls horizontal alignment: `left` (the default), `center`, `right`, or `justify`.
+
+**Center-aligned** text works beautifully for hero sections and headings — it creates a focal point. But body paragraphs should stay **left-aligned**. Long center-aligned text is actually harder to read because your eye has to hunt for the start of each new line.
+
+### line-height
+
+Controls the **vertical space between lines** of text. The browser default is cramped and uncomfortable to read. Setting `line-height` to **1.5–1.8** for body text gives your words breathing room.
+
+Use **unitless values** like `1.6` (not `1.6px` or `1.6em`). A unitless value is a *multiplier* of the font size — so `line-height: 1.6` on 16px text creates 25.6px of line height. This scales perfectly if the font size changes.
+
+### letter-spacing
+
+Controls the space **between individual letters**. A small positive value like `1px` or `0.05em` makes headings feel airy and premium. Negative values make text tighter and punchier.
+
+### text-transform
+
+Changes the **case** of text without changing the HTML: `uppercase`, `lowercase`, or `capitalize`. Here's a popular design pattern: **uppercase text + letter-spacing** on navigation links and subheadings. It gives text a refined, editorial feel.
+
+### text-decoration
+
+Controls lines drawn on text: `underline`, `overline`, `line-through`, or `none`. Its most common use? **Removing the default underline from links:**
+
+`a { text-decoration: none; }`
+
+Browsers underline links by default. Removing that underline — and replacing it with your own hover styles — is one of the first things designers do.
+
+## The Syntax
+
+```css
+/* Navigation links — uppercase, spaced out, no underline */
+nav a {
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Hero heading — centered, with a touch of letter-spacing */
+h1 {
+  text-align: center;
+  letter-spacing: -1px;
+}
+
+/* Body text — comfortable line height for reading */
+body {
+  line-height: 1.6;
+}
+
+/* Subheading — that editorial uppercase look */
+.section-label {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 12px;
+}
+```
+
+Notice how `nav a` targets only the links *inside* the `<nav>`. The navigation gets a clean, modern look: no underlines, uppercase letters, and generous spacing between characters.
+
+## Try It Yourself
+
+<CodeExercise language="html">
+<Instructions>
+Polish the text styling on this page:
+1. Style the `nav a` links: remove underlines (`text-decoration: none`), make them uppercase (`text-transform: uppercase`), and add `letter-spacing` of `2px`.
+2. Center-align the `h1` heading (`text-align: center`).
+3. Set the `body` line-height to `1.6`.
+</Instructions>
+
+<StartingCode>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Copywriter Landing Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      /* Add line-height here */
+    }
+
+    /* Style the nav links here */
+
+    /* Center the heading */
+
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <h1>Words That Work</h1>
+  <p>I help brands find their voice and tell stories that convert. With over five years of experience, I craft compelling content that drives real results for businesses of all sizes.</p>
+</body>
+</html>
+</StartingCode>
+
+<Solution>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Copywriter Landing Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+    }
+
+    nav a {
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <h1>Words That Work</h1>
+  <p>I help brands find their voice and tell stories that convert. With over five years of experience, I craft compelling content that drives real results for businesses of all sizes.</p>
+</body>
+</html>
+</Solution>
+
+<Validation>
+The navigation links should have no underlines, appear in ALL CAPS, and have visible spacing between each letter. The heading should be centered on the page. The paragraph text should feel more open and readable with comfortable space between each line.
+</Validation>
+</CodeExercise>
+
+## Recap
+
+- ✅ `text-align` centers headings and hero sections — keep body text left-aligned for readability
+- ✅ `line-height` adds breathing room between lines — use a unitless value like `1.6` for body text
+- ✅ `letter-spacing` and `text-transform: uppercase` give text a polished, editorial feel
+- ✅ Remove default link underlines with `text-decoration: none` — then add your own hover styles later

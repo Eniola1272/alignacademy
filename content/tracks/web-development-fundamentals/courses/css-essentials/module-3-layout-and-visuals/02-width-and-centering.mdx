@@ -1,0 +1,179 @@
+---
+title: "Width, Max-Width & Centering"
+slug: "width-and-centering"
+module: "Layout & Visuals"
+moduleSlug: "layout-and-visuals"
+course: "CSS Essentials"
+courseSlug: "css-essentials"
+order: 9
+estimatedMinutes: 6
+---
+
+# Width, Max-Width & Centering
+
+<Hook>
+Open any well-designed website on a widescreen monitor and you'll notice the content doesn't stretch from edge to edge. It sits in a comfortable column in the center, usually around 800–1200px wide. This is one of the simplest CSS techniques that instantly makes any page look more professional.
+</Hook>
+
+## The Concept
+
+By default, block elements stretch to fill the full width of their parent. On a wide monitor, that means paragraphs that are 1400px wide — exhausting to read. Professional websites solve this with two properties working together.
+
+**`width`** sets a **fixed** width. `width: 800px` makes an element exactly 800 pixels wide — no more, no less. The problem? If someone views your page on a phone or a narrow window, the content is **wider than the screen**, and they get an ugly horizontal scrollbar.
+
+**`max-width`** is the smarter alternative. It sets a **maximum** width — the element can shrink smaller on narrow screens, but it will never stretch wider than the limit. `max-width: 800px` on a 600px screen? The element is 600px. On a 1200px screen? It caps at 800px. It's **responsive by nature**.
+
+Now here's the magic: **`margin: 0 auto`**. When you set the left and right margins to `auto`, the browser distributes the leftover space **equally** on both sides. The result? A perfectly centered element. This only works on **block elements** with a defined width or max-width — the browser needs to know how much "leftover" space to split.
+
+The **magic combo** that appears on virtually every professional website:
+
+```css
+max-width: 800px;
+margin: 0 auto;
+```
+
+That's it. Two lines. Your content sits in a comfortable, readable column — centered — and it works on every screen size.
+
+One more thing: **`width: 100%` vs. `width: auto`**. Block elements already fill their parent's width by default (`auto`). Setting `width: 100%` is explicit, but usually unnecessary on block elements. Save `width: 100%` for images inside containers or inline-block elements that need to stretch.
+
+## The Syntax
+
+```html
+<section class="about">
+  <h2>About Me</h2>
+  <p>I'm a freelance copywriter who helps brands find their voice.
+     With 8 years of experience, I've written for startups,
+     agencies, and Fortune 500 companies.</p>
+</section>
+
+<style>
+  /* Without max-width — text stretches edge-to-edge on wide screens */
+  .about {
+    padding: 40px 20px;
+  }
+
+  /* With max-width and centering — clean, professional, readable */
+  .about {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+</style>
+```
+
+The `padding: 40px 20px` adds breathing room inside the section. The `max-width` prevents it from getting too wide. And `margin: 0 auto` places it right in the center. Three properties, one polished layout.
+
+## Try It Yourself
+
+<CodeExercise language="html">
+<Instructions>
+Center the content of the landing page by adding two properties to the `section` rule:
+1. Set `max-width` to `800px`.
+2. Set `margin` to `0 auto` to center each section horizontally.
+</Instructions>
+
+<StartingCode>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Copywriter Landing Page</title>
+  <style>
+    body {
+      font-family: Georgia, serif;
+      margin: 0;
+      color: #1a1a2e;
+    }
+
+    section {
+      padding: 40px 20px;
+      /* Add your styles below */
+
+    }
+
+    h2 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      line-height: 1.7;
+    }
+  </style>
+</head>
+<body>
+  <section>
+    <h2>About Me</h2>
+    <p>I'm a freelance copywriter who helps brands find their voice. With 8 years of experience crafting stories for startups, agencies, and Fortune 500 companies, I know how to turn browsers into buyers.</p>
+  </section>
+
+  <section>
+    <h2>Services</h2>
+    <p>Website copy, email campaigns, brand voice guides, and blog content — all tailored to your audience and goals.</p>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <p>Ready to work together? Reach out and let's talk about your next project.</p>
+  </section>
+</body>
+</html>
+</StartingCode>
+
+<Solution>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Copywriter Landing Page</title>
+  <style>
+    body {
+      font-family: Georgia, serif;
+      margin: 0;
+      color: #1a1a2e;
+    }
+
+    section {
+      padding: 40px 20px;
+      /* Add your styles below */
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      line-height: 1.7;
+    }
+  </style>
+</head>
+<body>
+  <section>
+    <h2>About Me</h2>
+    <p>I'm a freelance copywriter who helps brands find their voice. With 8 years of experience crafting stories for startups, agencies, and Fortune 500 companies, I know how to turn browsers into buyers.</p>
+  </section>
+
+  <section>
+    <h2>Services</h2>
+    <p>Website copy, email campaigns, brand voice guides, and blog content — all tailored to your audience and goals.</p>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <p>Ready to work together? Reach out and let's talk about your next project.</p>
+  </section>
+</body>
+</html>
+</Solution>
+
+<Validation>
+The three sections should no longer stretch to the full width of the browser. Instead, they sit in a centered column no wider than 800px. On a wide screen, you'll see equal empty space on the left and right sides. On a narrow screen, the content still fits naturally without horizontal scrolling.
+</Validation>
+</CodeExercise>
+
+## Recap
+
+- ✅ **`max-width`** sets a limit without causing overflow — it's better than fixed `width` for responsive design.
+- ✅ **`margin: 0 auto`** centers block elements horizontally — the simplest centering technique in CSS.
+- ✅ The combo **`max-width` + `margin: 0 auto`** is used on virtually every professional website to create a readable, centered content column.

@@ -1,0 +1,67 @@
+---
+title: "Opening Links in New Tabs"
+slug: "opening-new-tabs"
+module: "Media & Links"
+moduleSlug: "media-and-links"
+course: "HTML Foundations"
+courseSlug: "html-foundations"
+order: 9
+estimatedMinutes: 5
+---
+
+# Opening Links in New Tabs
+
+<Hook>
+Ever clicked a link on a website and gotten taken away from the page you were reading? Annoying, right? Sometimes you want a link to open in a brand new tab so users don't lose their place. One small attribute makes this happen.
+</Hook>
+
+## The Concept
+
+In the last lesson, you learned that links open in the **same tab** by default. But what if you're linking to an *external* website and don't want your user to leave your page? That's where the **`target`** attribute comes in.
+
+Adding **`target="_blank"`** to an `<a>` tag tells the browser: "Open this link in a new tab." The underscore in `_blank` is required — it's not just `blank`. It's a special keyword the browser recognizes.
+
+But here's the important part: **always pair `target="_blank"` with `rel="noopener noreferrer"`**. Why? Without it, the new page can access your page's `window.opener` object. This is a security vulnerability called **reverse tabnapping** — the new tab could secretly redirect your original page to a fake login screen or malicious site.
+
+Think of `rel="noopener noreferrer"` as locking the door behind you when you leave. It severs the connection between the two tabs so neither can tamper with the other.
+
+**Best practice:** Use `target="_blank"` for **external links** (other people's websites). Keep **internal links** (pages on your own site) opening in the same tab. Users expect to stay within your site when clicking internal navigation.
+
+## The Syntax
+
+```html
+<a href="https://www.google.com" target="_blank" rel="noopener noreferrer">Visit Google</a>
+```
+
+Here's what each part does:
+
+- **`target="_blank"`** — Opens the link in a new browser tab.
+- **`rel="noopener noreferrer"`** — Protects your page from the security risk of the new tab accessing your site. Always include this when using `target="_blank"`.
+
+Everything else works exactly like a normal link — the `href` is the destination, and the text between the tags is what the user clicks.
+
+## Try It Yourself
+
+<CodeExercise language="html">
+<Instructions>
+This link already works, but it opens in the same tab. Add the `target` and `rel` attributes so it opens in a new tab safely.
+</Instructions>
+
+<StartingCode>
+<a href="https://www.google.com">Visit Google</a>
+</StartingCode>
+
+<Solution>
+<a href="https://www.google.com" target="_blank" rel="noopener noreferrer">Visit Google</a>
+</Solution>
+
+<Validation>
+The link should still display "Visit Google," but clicking it now opens Google in a new browser tab instead of replacing the current page.
+</Validation>
+</CodeExercise>
+
+## Recap
+
+- ✅ `target="_blank"` makes a link open in a new browser tab
+- ✅ Always add `rel="noopener noreferrer"` with `target="_blank"` for security
+- ✅ Use new tabs for external links — keep internal links in the same tab

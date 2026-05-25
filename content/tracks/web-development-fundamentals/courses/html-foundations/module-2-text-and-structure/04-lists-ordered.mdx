@@ -1,0 +1,84 @@
+---
+title: "Lists (Ordered)"
+slug: "lists-ordered"
+module: "Text & Structure"
+moduleSlug: "text-and-structure"
+course: "HTML Foundations"
+courseSlug: "html-foundations"
+order: 7
+estimatedMinutes: 6
+---
+
+# Lists (Ordered)
+
+<Hook>
+A grocery list doesn't care about order — you can buy milk before eggs. But a recipe? Step 1 has to come before Step 2, or you'll end up with a kitchen disaster. When order matters, HTML has a different kind of list waiting for you.
+</Hook>
+
+## The Concept
+
+The **`<ol>`** tag creates an **ordered list**. It works exactly like `<ul>`, but with one key difference: the browser **automatically numbers each item** for you.
+
+You never type the numbers yourself. Just wrap your items in `<li>` tags inside an `<ol>`, and HTML counts them: 1, 2, 3, and so on. If you add or remove an item, the numbers update automatically. No manual re-counting needed.
+
+The golden rule is simple: **use `<ol>` when sequence matters** — think instructions, rankings, step-by-step guides, or top-ten lists. Use `<ul>` when it doesn't — like shopping lists or feature lists.
+
+The `<ol>` tag also has a few bonus attributes you should know about:
+
+- **`start="5"`** — start counting from a different number
+- **`reversed`** — count backwards (great for countdowns or "top 10" lists)
+- **`type="A"`** — use letters instead of numbers (options: `1`, `A`, `a`, `I`, `i`)
+
+You don't need to memorize these right now. Just know they exist for when you need them later.
+
+## The Syntax
+
+```html
+<h2>How to Make Scrambled Eggs</h2>
+<ol>
+  <li>Crack two eggs into a bowl</li>
+  <li>Add a splash of milk and whisk together</li>
+  <li>Heat butter in a pan over medium heat</li>
+  <li>Pour in the egg mixture</li>
+  <li>Stir gently until cooked</li>
+  <li>Season with salt and pepper, then serve</li>
+</ol>
+```
+
+Notice you didn't type a single number — the browser adds "1. 2. 3. 4. 5. 6." all on its own. If you removed step 3, everything would automatically renumber to keep the sequence correct.
+
+## Try It Yourself
+
+<CodeExercise language="html">
+<Instructions>
+The list below shows recipe steps, but it's using `<ul>` (unordered) — so the steps have bullet points instead of numbers. Fix it by changing `<ul>` to `<ol>` (don't forget the closing tag!).
+</Instructions>
+
+<StartingCode>
+<ul>
+  <li>Crack the eggs</li>
+  <li>Whisk with milk</li>
+  <li>Pour into hot pan</li>
+  <li>Fold and serve</li>
+</ul>
+</StartingCode>
+
+<Solution>
+<ol>
+  <li>Crack the eggs</li>
+  <li>Whisk with milk</li>
+  <li>Pour into hot pan</li>
+  <li>Fold and serve</li>
+</ol>
+</Solution>
+
+<Validation>
+The list should now display with numbers (1, 2, 3, 4) instead of bullet points. The steps should appear in the correct numbered order.
+</Validation>
+</CodeExercise>
+
+## Recap
+
+- ✅ `<ol>` creates an ordered (numbered) list — the browser adds numbers automatically
+- ✅ Use `<ol>` when sequence matters (steps, rankings, instructions)
+- ✅ The `<li>` tag works the same in both `<ul>` and `<ol>`

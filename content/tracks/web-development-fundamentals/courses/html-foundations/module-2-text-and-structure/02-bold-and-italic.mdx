@@ -1,0 +1,75 @@
+---
+title: "Bold & Italic"
+slug: "bold-and-italic"
+module: "Text & Structure"
+moduleSlug: "text-and-structure"
+course: "HTML Foundations"
+courseSlug: "html-foundations"
+order: 5
+estimatedMinutes: 5
+---
+
+# Bold & Italic
+
+<Hook>
+When you're texting a friend and want to emphasize something, you might write it in ALL CAPS or add exclamation marks!!! HTML gives you a more elegant way to do this — elements that tell the browser (and screen readers) "hey, this part is important" or "this part has emphasis."
+</Hook>
+
+## The Concept
+
+Meet your two new best friends: **`<strong>`** and **`<em>`**.
+
+`<strong>` marks text as **strongly important**. The browser renders it in **bold**. But it does more than just change the look — it tells screen readers and search engines that this text *matters*.
+
+`<em>` adds **emphasis** to text. The browser renders it in *italics*. Screen readers will actually **change their tone of voice** when they encounter `<em>` — that's how your emphasis reaches users who can't see the screen.
+
+You might be wondering: "What about `<b>` and `<i>`?" Good question. Those tags exist too, but they're **purely visual** — they make text bold or italic without adding any *meaning*. They're like putting on a costume without playing the part.
+
+**Best practice: always use `<strong>` and `<em>`.** They convey meaning, not just appearance. This matters for accessibility — real people rely on screen readers every day.
+
+You can even **nest them together** for text that's both bold *and* italic:
+
+`<strong><em>really important</em></strong>`
+
+Think of `<strong>` as raising your voice and `<em>` as leaning into a word. Sometimes you need both.
+
+## The Syntax
+
+```html
+<p>
+  Please <strong>do not</strong> touch the wet paint.
+  It takes <em>at least</em> two hours to dry completely.
+</p>
+
+<p>
+  This product is <strong><em>not suitable</em></strong> for children under 3.
+</p>
+```
+
+In the first paragraph, "do not" is marked as strongly important — a clear warning. The word "at least" gets emphasis — it shifts the tone of the sentence. In the second paragraph, nesting both tags creates text that is bold AND italic.
+
+## Try It Yourself
+
+<CodeExercise language="html">
+<Instructions>
+In the recipe paragraph below, make "400 degrees" bold using `<strong>` and make "exactly" italic using `<em>`.
+</Instructions>
+
+<StartingCode>
+<p>Preheat your oven to 400 degrees and wait for exactly 15 minutes.</p>
+</StartingCode>
+
+<Solution>
+<p>Preheat your oven to <strong>400 degrees</strong> and wait for <em>exactly</em> 15 minutes.</p>
+</Solution>
+
+<Validation>
+"400 degrees" should appear bold and "exactly" should appear in italics within the paragraph.
+</Validation>
+</CodeExercise>
+
+## Recap
+
+- ✅ `<strong>` makes text bold AND tells browsers it's important
+- ✅ `<em>` makes text italic AND adds emphasis for screen readers
+- ✅ Always prefer `<strong>`/`<em>` over `<b>`/`<i>` — meaning matters more than appearance

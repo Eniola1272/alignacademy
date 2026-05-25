@@ -1,0 +1,72 @@
+{
+  "id": "html-foundations",
+  "slug": "html-foundations",
+  "title": "HTML Foundations",
+  "description": "Take your first step into web development. Learn how to structure web pages with HTML — the language every website on the internet is built with. No prior experience needed.",
+  "language": "html",
+  "difficulty": "beginner",
+  "order": 1,
+  "trackSlug": "web-development-fundamentals",
+  "estimatedHours": 2,
+  "totalLessons": 12,
+  "modules": [
+    {
+      "slug": "module-1-first-steps",
+      "title": "First Steps",
+      "order": 1,
+      "description": "Write your very first lines of HTML and understand the basic building blocks of every web page.",
+      "lessons": [
+        { "slug": "01-what-is-html", "order": 1 },
+        { "slug": "02-elements-and-tags", "order": 2 },
+        { "slug": "03-the-body", "order": 3 }
+      ]
+    },
+    {
+      "slug": "module-2-text-and-structure",
+      "title": "Text & Structure",
+      "order": 2,
+      "description": "Learn to organize content with headings, format text, and build lists — the core of every web page.",
+      "lessons": [
+        { "slug": "01-headings-hierarchy", "order": 4 },
+        { "slug": "02-bold-and-italic", "order": 5 },
+        { "slug": "03-lists-unordered", "order": 6 },
+        { "slug": "04-lists-ordered", "order": 7 }
+      ]
+    },
+    {
+      "slug": "module-3-media-and-links",
+      "title": "Media & Links",
+      "order": 3,
+      "description": "Connect your pages to the world with hyperlinks and bring them to life with images.",
+      "lessons": [
+        { "slug": "01-the-anchor-tag", "order": 8 },
+        { "slug": "02-opening-new-tabs", "order": 9 },
+        { "slug": "03-adding-images", "order": 10 },
+        { "slug": "04-the-alt-attribute", "order": 11 }
+      ]
+    },
+    {
+      "slug": "module-4-final-project",
+      "title": "Final Project",
+      "order": 4,
+      "description": "Combine everything you've learned to build the HTML structure of a freelance copywriter's landing page — the same page you'll style in CSS Essentials.",
+      "lessons": [
+        { "slug": "01-build-a-landing-page", "order": 12 }
+      ]
+    }
+  ],
+  "prerequisites": [],
+  "certificatePrice": {
+    "amount": 15000,
+    "currency": "NGN"
+  },
+  "learningOutcomes": [
+    "Understand what HTML is and how browsers render it",
+    "Write well-structured HTML documents with proper document structure",
+    "Use headings, paragraphs, bold, and italic elements for text content",
+    "Create ordered and unordered lists",
+    "Add hyperlinks and control how they open",
+    "Insert images with proper alt text for accessibility",
+    "Build the complete HTML structure of a professional landing page from scratch"
+  ]
+}

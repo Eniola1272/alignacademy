@@ -1,0 +1,202 @@
+---
+title: "The Box Model"
+slug: "the-box-model"
+module: "Typography & Spacing"
+moduleSlug: "typography-and-spacing"
+course: "CSS Essentials"
+courseSlug: "css-essentials"
+order: 7
+estimatedMinutes: 9
+---
+
+# The Box Model
+
+<Hook>
+Here's a secret that trips up every beginner: in CSS, every single element on the page is a box. That heading? A box. That paragraph? A box. That image? A box. Understanding how these boxes are sized and spaced is the single most important concept in CSS layout. Get this right, and everything else clicks.
+</Hook>
+
+## The Concept
+
+Every HTML element is wrapped in an invisible box. That box has **four layers**, from the inside out:
+
+### 1. Content
+
+The innermost layer. This is the actual text, image, or whatever the element holds. When you set `width` and `height`, you're sizing this layer (by default).
+
+### 2. Padding
+
+The space **between the content and the border**. Padding goes *inside* the box.
+
+Think of it like the cushioning inside a picture frame. The photo (content) doesn't touch the frame (border) directly — there's a mat (padding) in between. More padding = more breathing room for your content.
+
+### 3. Border
+
+The visible edge around the element. You control its `width`, `style` (solid, dashed, dotted), and `color`.
+
+```css
+border: 2px solid #e0e0e0;
+```
+
+This is one line that sets all three properties at once — 2 pixels wide, solid line, light gray color.
+
+### 4. Margin
+
+The space **outside the box**, pushing other elements away. Margin creates distance between elements.
+
+Think of margin as personal space. When people stand in a queue, they don't press against each other — there's an invisible buffer between them. That's margin.
+
+### The Width Gotcha
+
+Here's where beginners get tripped up. By default, padding and border **add** to the element's width. So a box with `width: 300px` and `padding: 20px` on each side actually takes up **340px** on screen. That's confusing and leads to broken layouts.
+
+**The fix:** `box-sizing: border-box`. This tells the browser to include padding and border *inside* your declared width. A 300px box stays 300px, no matter how much padding you add.
+
+**Best practice:** Add this universal reset at the top of every CSS file:
+
+```css
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+```
+
+The `*` selector means "every element." This one rule saves you from countless headaches.
+
+### Margin Collapse
+
+One quirk to know: when two elements stack vertically, their margins **collapse** into one. If one element has `margin-bottom: 30px` and the next has `margin-top: 20px`, the space between them is **30px** (the larger value), not 50px. This is intentional — it prevents double-spacing — but it surprises beginners.
+
+## The Syntax
+
+```css
+/* Always start with this reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* A styled card showing all four layers */
+.card {
+  /* Content: the text inside flows naturally */
+
+  /* Padding: 24px of breathing room inside the card */
+  padding: 24px;
+
+  /* Border: thin, light gray edge */
+  border: 2px solid #e0e0e0;
+
+  /* Margin: 32px of space below each card */
+  margin-bottom: 32px;
+}
+```
+
+You can also set padding and margin on **individual sides**:
+
+```css
+.card {
+  padding-top: 16px;
+  padding-right: 24px;
+  padding-bottom: 16px;
+  padding-left: 24px;
+
+  /* Or use shorthand — top, right, bottom, left (clockwise) */
+  padding: 16px 24px 16px 24px;
+
+  /* If top/bottom match AND left/right match, shorten further */
+  padding: 16px 24px;
+}
+```
+
+The shorthand goes clockwise from the top: **top → right → bottom → left**. A handy way to remember: think of a clock starting at 12.
+
+## Try It Yourself
+
+<CodeExercise language="html">
+<Instructions>
+Style the service cards using the box model:
+1. Add the `box-sizing: border-box` reset using the `*, *::before, *::after` selector.
+2. Give `.card` the following styles: `padding` of `24px`, a `border` of `2px solid #e0e0e0`, and a `margin-bottom` of `32px`.
+</Instructions>
+
+<StartingCode>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Copywriter Landing Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+    }
+
+    /* Add the box-sizing reset here */
+
+    /* Style the cards here */
+
+  </style>
+</head>
+<body>
+  <h1>My Services</h1>
+
+  <div class="card">
+    <h2>Website Copy</h2>
+    <p>Clear, persuasive text that turns visitors into customers. Every word earns its place on the page.</p>
+  </div>
+
+  <div class="card">
+    <h2>Email Campaigns</h2>
+    <p>Emails people actually want to open. From subject lines to sign-offs, crafted to drive action.</p>
+  </div>
+</body>
+</html>
+</StartingCode>
+
+<Solution>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Copywriter Landing Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+    }
+
+    .card {
+      padding: 24px;
+      border: 2px solid #e0e0e0;
+      margin-bottom: 32px;
+    }
+
+  </style>
+</head>
+<body>
+  <h1>My Services</h1>
+
+  <div class="card">
+    <h2>Website Copy</h2>
+    <p>Clear, persuasive text that turns visitors into customers. Every word earns its place on the page.</p>
+  </div>
+
+  <div class="card">
+    <h2>Email Campaigns</h2>
+    <p>Emails people actually want to open. From subject lines to sign-offs, crafted to drive action.</p>
+  </div>
+</body>
+</html>
+</Solution>
+
+<Validation>
+Each card should have visible breathing room between its text and the border (padding), a thin light gray outline (border), and clear separation between the two cards (margin). The text should not press against the edges of the card — it should feel contained and comfortable.
+</Validation>
+</CodeExercise>
+
+## Recap
+
+- ✅ Every element is a box with 4 layers: **content**, **padding**, **border**, **margin**
+- ✅ Padding adds space **inside** the box — margin adds space **outside**, pushing other elements away
+- ✅ Always use `box-sizing: border-box` — it prevents width surprises and makes sizing intuitive

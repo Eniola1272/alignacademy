@@ -1,0 +1,272 @@
+---
+title: "Build a Landing Page"
+slug: "build-a-landing-page"
+module: "Final Project"
+moduleSlug: "module-4-final-project"
+course: "HTML Foundations"
+courseSlug: "html-foundations"
+order: 12
+estimatedMinutes: 15
+---
+
+# Build a Landing Page
+
+<Hook>
+This is it — the moment everything comes together. Over the past 11 lessons, you've learned headings, paragraphs, bold and italic text, lists, links, and images. Now you're going to combine **ALL** of those skills to build something real: the HTML structure of a **freelance copywriter's landing page**. This is the exact kind of page real freelancers use to attract clients and land work. And here's a secret — in the next course (CSS Essentials), you'll take this exact page and make it look stunning. You're building the foundation right now.
+</Hook>
+
+## The Concept
+
+This lesson is different from every lesson before it. There's no single new concept to learn. Instead, this is a **guided project** — your chance to take *everything* you've learned and build a complete web page from scratch.
+
+Think of it like learning to cook. You've spent weeks learning to chop, sauté, boil, and season. Now it's time to make the whole meal.
+
+Here's what your landing page will include:
+
+- **A navigation bar** — links that let visitors jump to different sections
+- **A hero section** (`header`) — the big, bold intro with a name, tagline, and call-to-action
+- **An about section** — a photo, bio paragraph with **bold** and *italic* emphasis
+- **A services section** — an unordered list of what the copywriter offers
+- **A work section** — an ordered list of top achievements with results
+- **A contact section** — links to get in touch (at least one opening in a new tab)
+- **A footer** — copyright info
+
+You'll notice some new tags here: `<nav>`, `<header>`, `<section>`, and `<footer>`. These are called **semantic elements** — they work exactly like containers (similar to `<div>`), but their names tell the browser *what kind of content* is inside. A `<nav>` holds navigation. A `<header>` holds introductory content. A `<section>` groups related content. A `<footer>` holds closing info. They make your code more readable and more accessible.
+
+There's no single "right answer" here — the page should feel real. And remember: this page is **YOUR foundation**. In the CSS course, you'll come back and transform it into a polished, professional landing page.
+
+## The Syntax
+
+Here's a complete example. We'll use a fictional copywriter named **Sarah Chen** so you can see how all the pieces fit together — but when it's your turn, feel free to customize it however you like.
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sarah Chen | Freelance Copywriter</title>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#work">Work</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <header>
+        <h1>Sarah Chen</h1>
+        <p><em>Freelance Copywriter</em></p>
+        <p>I write words that <strong>convert visitors into customers</strong>.</p>
+        <a href="#contact">Hire Me</a>
+    </header>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Me</h2>
+        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=300" alt="Sarah Chen smiling at her desk with a laptop" width="300">
+        <p>
+            I'm a <strong>freelance copywriter</strong> with 5 years of experience
+            helping brands tell their story. I specialize in
+            <em>website copy, email campaigns, and SEO content</em> that
+            doesn't just sound good — it <strong>drives results</strong>.
+        </p>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <h2>My Services</h2>
+        <ul>
+            <li>Website Copy & Landing Pages</li>
+            <li>Email Marketing Campaigns</li>
+            <li>Blog Posts & SEO Content</li>
+            <li>Social Media Copywriting</li>
+        </ul>
+    </section>
+
+    <!-- Selected Work Section -->
+    <section id="work">
+        <h2>Selected Work</h2>
+        <ol>
+            <li>Redesigned landing page copy for TechStart — <em>increased conversions by 40%</em></li>
+            <li>Email sequence for GreenLeaf Organics — <em>generated $12k in first week</em></li>
+            <li>Blog strategy for CloudBase — <em>tripled organic traffic in 3 months</em></li>
+        </ol>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Let's Work Together</h2>
+        <p>
+            Ready to level up your copy?
+            <a href="mailto:sarah@example.com">Send me an email</a>
+            or find me on
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>.
+        </p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Sarah Chen. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
+```
+
+Notice how the page flows naturally from top to bottom — navigation, hero, about, services, work, contact, footer. That's how real landing pages are structured. Each section uses an `<h2>` heading, keeping the hierarchy clean under the single `<h1>`. The navigation links use `#about`, `#services`, etc. — these are called **anchor links** that jump to the matching `id` on the page.
+
+This is a **complete, valid HTML5 page**. It has no styling yet — it looks plain in the browser. But every element is in the right place, every image has alt text, and every section serves a clear purpose. **Structure first, style later.** That's professional web development.
+
+## Try It Yourself
+
+<CodeExercise language="html">
+<Instructions>
+Time to build YOUR copywriter landing page! Fill in every commented section below with the correct HTML elements. Use the example above as a reference, but make it your own. Here's your checklist:
+
+1. Add navigation links to each section
+2. Create a hero with an `h1` name, tagline using `em`, pitch using `strong`, and a "Hire Me" link
+3. Add an about section with an image (use any image URL), and a bio paragraph using `strong` and `em`
+4. Add a services section with an unordered list of at least 3 services
+5. Add a work section with an ordered list of at least 3 achievements
+6. Add a contact section with at least one link that opens in a new tab
+7. Add a footer with a copyright line
+</Instructions>
+
+<StartingCode>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Copywriter Landing Page</title>
+</head>
+<body>
+
+    <!-- 1. Navigation: Add links to #about, #services, #work, and #contact -->
+    <nav>
+
+    </nav>
+
+    <!-- 2. Hero Section: Add an h1 with a name, a tagline with <em>, a pitch with <strong>, and a "Hire Me" link to #contact -->
+    <header>
+
+    </header>
+
+    <!-- 3. About Section: Add an h2 "About Me", an image with alt text, and a bio paragraph using <strong> and <em> -->
+    <section id="about">
+
+    </section>
+
+    <!-- 4. Services Section: Add an h2 "My Services" and an unordered list with at least 3 services -->
+    <section id="services">
+
+    </section>
+
+    <!-- 5. Work Section: Add an h2 "Selected Work" and an ordered list with at least 3 achievements -->
+    <section id="work">
+
+    </section>
+
+    <!-- 6. Contact Section: Add an h2 "Let's Work Together" and a paragraph with at least one link that opens in a new tab -->
+    <section id="contact">
+
+    </section>
+
+    <!-- 7. Footer: Add a paragraph with a copyright symbol (&copy;) and your name -->
+    <footer>
+
+    </footer>
+
+</body>
+</html>
+</StartingCode>
+
+<Solution>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Copywriter Landing Page</title>
+</head>
+<body>
+
+    <!-- 1. Navigation -->
+    <nav>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#work">Work</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- 2. Hero Section -->
+    <header>
+        <h1>Sarah Chen</h1>
+        <p><em>Freelance Copywriter</em></p>
+        <p>I write words that <strong>convert visitors into customers</strong>.</p>
+        <a href="#contact">Hire Me</a>
+    </header>
+
+    <!-- 3. About Section -->
+    <section id="about">
+        <h2>About Me</h2>
+        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=300" alt="Sarah Chen smiling at her desk" width="300">
+        <p>
+            I'm a <strong>freelance copywriter</strong> with 5 years of experience
+            helping brands find their voice. I specialize in <em>website copy
+            and email campaigns</em> that drive real results.
+        </p>
+    </section>
+
+    <!-- 4. Services Section -->
+    <section id="services">
+        <h2>My Services</h2>
+        <ul>
+            <li>Website Copy & Landing Pages</li>
+            <li>Email Marketing Campaigns</li>
+            <li>Blog Posts & SEO Content</li>
+            <li>Social Media Copywriting</li>
+        </ul>
+    </section>
+
+    <!-- 5. Work Section -->
+    <section id="work">
+        <h2>Selected Work</h2>
+        <ol>
+            <li>Landing page for TechStart — <em>increased conversions by 40%</em></li>
+            <li>Email sequence for GreenLeaf — <em>generated $12k in first week</em></li>
+            <li>Blog strategy for CloudBase — <em>tripled organic traffic</em></li>
+        </ol>
+    </section>
+
+    <!-- 6. Contact Section -->
+    <section id="contact">
+        <h2>Let's Work Together</h2>
+        <p>
+            Ready to level up your copy?
+            <a href="mailto:sarah@example.com">Send me an email</a>
+            or find me on
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>.
+        </p>
+    </section>
+
+    <!-- 7. Footer -->
+    <footer>
+        <p>&copy; 2026 Sarah Chen. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
+</Solution>
+
+<Validation>
+Your page should display: a navigation bar with 4 anchor links, a hero section with an h1 name and tagline, an about section with an image and bio, a services section with a bulleted list, a work section with a numbered list, a contact section with a link that opens in a new tab, and a footer with a copyright notice. Every section should be filled in with content — no empty sections!
+</Validation>
+</CodeExercise>
+
+## Recap
+
+- ✅ You built a **complete landing page structure** using every HTML concept from this course — headings, paragraphs, emphasis, lists, links, images, and semantic elements
+- ✅ Real landing pages follow this same pattern — navigation, hero, content sections, contact, and footer
+- ✅ This page is **YOUR canvas** — in CSS Essentials, you'll transform this plain HTML into a polished, professional-looking landing page that could win real clients
+
+🎉 **Congratulations!** You've completed HTML Foundations. You now understand how web pages are built from the ground up. But right now, your landing page looks… plain. Just black text on a white background. That's about to change. In the next course — **CSS Essentials** — you'll take this exact page and add colors, fonts, spacing, layouts, hover effects, and responsive design. By the end, it'll look like something a real freelancer would proudly put online. See you there!

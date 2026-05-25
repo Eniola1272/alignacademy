@@ -1,0 +1,150 @@
+---
+title: "The Display Property"
+slug: "display-property"
+module: "Layout & Visuals"
+moduleSlug: "layout-and-visuals"
+course: "CSS Essentials"
+courseSlug: "css-essentials"
+order: 8
+estimatedMinutes: 7
+---
+
+# The Display Property
+
+<Hook>
+Have you noticed that headings always start on a new line, but links sit next to each other? That's not magic — it's the `display` property at work. Every HTML element has a default display behavior, and understanding it is the key to controlling how elements flow on your page.
+</Hook>
+
+## The Concept
+
+Every HTML element is born with a **display type**. Think of it like personality — some elements are introverts (they want their own line), and some are extroverts (they're happy sitting right next to others).
+
+**Block elements** are the introverts. They take up the **full width** available and always start on a **new line**. Elements like `<div>`, `<h1>`–`<h6>`, `<p>`, and `<section>` are all block-level by default. They stack vertically, one on top of another — like boxes in a moving truck.
+
+**Inline elements** are the extroverts. They only take up **as much width as they need** and flow in a line with other content. Think of them as words in a sentence — `<a>`, `<span>`, `<strong>`, and `<em>` are all inline. Here's the catch: you **cannot** set `width` or `height` on inline elements. They go with the flow.
+
+**Inline-block** is the best of both worlds. Elements flow **side-by-side** like inline elements, but you **can** set `width`, `height`, `padding`, and `margin` on all sides. This is perfect for turning navigation links into button-like tabs.
+
+And then there's **`display: none`** — it hides the element completely. Poof. Gone from the page. The browser acts like it was never there. This is handy for hiding things on different screen sizes. (Its cousin, `visibility: hidden`, hides the element visually but **keeps the empty space** it occupied.)
+
+The game-changer? You can **override** any element's default display type with CSS. Turn a link into a block. Turn a paragraph into an inline element. You're in charge.
+
+## The Syntax
+
+```html
+<nav>
+  <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#work">Work</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<style>
+  /* Links are inline by default — they sit in a line but you can't
+     control their padding or size very well */
+  nav a {
+    color: #1a1a2e;
+    text-decoration: none;
+  }
+
+  /* Change them to inline-block — now we get the best of both worlds:
+     they still sit side-by-side, BUT we can add padding and sizing */
+  nav a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    color: #1a1a2e;
+    text-decoration: none;
+    border-radius: 4px;
+  }
+</style>
+```
+
+Notice the difference: plain inline links are just clickable text. Once you switch them to `inline-block` and add padding, they become **button-like tabs** — chunky, clickable areas that feel designed and intentional.
+
+The `inline-block` value is what makes this possible. Without it, the top and bottom padding on inline elements behaves unpredictably — it doesn't push other elements away.
+
+## Try It Yourself
+
+<CodeExercise language="html">
+<Instructions>
+Transform the navigation links from plain text into button-like tabs:
+1. Set the `display` property of all `nav a` elements to `inline-block`.
+2. Add `padding: 10px 20px` to give each link a clickable area.
+3. Add `background-color: #e8e8e8` so you can see the tab shape.
+</Instructions>
+
+<StartingCode>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Copywriter Landing Page</title>
+  <style>
+    body {
+      font-family: Georgia, serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    nav a {
+      color: #1a1a2e;
+      text-decoration: none;
+      /* Add your styles below */
+
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#work">Work</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</body>
+</html>
+</StartingCode>
+
+<Solution>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Copywriter Landing Page</title>
+  <style>
+    body {
+      font-family: Georgia, serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    nav a {
+      color: #1a1a2e;
+      text-decoration: none;
+      /* Add your styles below */
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #e8e8e8;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#work">Work</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</body>
+</html>
+</Solution>
+
+<Validation>
+The four navigation links should appear as rectangular tab-shaped buttons with a light gray background. Each link has visible padding around the text, and they sit side-by-side in a horizontal row.
+</Validation>
+</CodeExercise>
+
+## Recap
+
+- ✅ **Block** elements stack vertically and take full width — **inline** elements flow side-by-side and only take the space they need.
+- ✅ **Inline-block** gives you the best of both — flows inline but lets you set width, height, and padding on all sides.
+- ✅ The `display` property is your first tool for breaking out of the default vertical flow and taking control of your layout.

@@ -1,0 +1,188 @@
+---
+title: "Hover Effects & Transitions"
+slug: "hover-and-transitions"
+module: "Interactivity & Launch"
+moduleSlug: "interactivity-and-launch"
+course: "CSS Essentials"
+courseSlug: "css-essentials"
+order: 12
+estimatedMinutes: 7
+---
+
+# Hover Effects & Transitions
+
+<Hook>
+A website that doesn't respond to your mouse feels dead. You hover over a button and... nothing happens. Compare that to a site where buttons glow, links shift color, and cards lift when you hover. That micro-feedback feels **alive** and professional. CSS makes this incredibly easy with just two tools: pseudo-classes and transitions.
+</Hook>
+
+## The Concept
+
+Think of a light switch. You flip it, the light turns on — instantly. That's what CSS does by default when you hover over an element. The style snaps on, then snaps off. But what if the light could **fade** on smoothly? That's what transitions do.
+
+### The `:hover` Pseudo-Class
+
+The `:hover` pseudo-class applies styles **only when the user's mouse is over an element**. The syntax looks like this: `selector:hover { }`. Notice there's **no space** between the selector and `:hover`.
+
+It works on any visible element — links, buttons, divs, even images. Common hover effects include changing `color`, `background-color`, adding a `box-shadow`, or scaling up with `transform: scale(1.05)`.
+
+### The `transition` Property
+
+Without `transition`, hover changes happen instantly. With it, they **animate smoothly**. The syntax is:
+
+```css
+transition: property duration timing-function;
+```
+
+For example, `transition: background-color 0.3s ease;` means: *"When background-color changes, take 0.3 seconds and ease in and out."*
+
+Use `transition: all 0.3s ease;` to animate **every** property that changes. This is the easiest starting point.
+
+**Important:** The `transition` goes on the **base state** — not the `:hover` state. This way, it controls the animation **both ways** (fading in *and* fading out).
+
+## The Syntax
+
+Here's a "Hire Me" button that glows and grows on hover:
+
+```html
+<style>
+  .cta-button {
+    display: inline-block;
+    background-color: #f5576c;
+    color: white;
+    padding: 14px 32px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+
+    /* Transition goes on the BASE state */
+    transition: all 0.3s ease;
+  }
+
+  .cta-button:hover {
+    background-color: #e0314b;
+    box-shadow: 0 4px 15px rgba(245, 87, 108, 0.4);
+    transform: scale(1.05);
+  }
+</style>
+
+<a href="#contact" class="cta-button">Hire Me</a>
+```
+
+The base state defines the button's normal look **and** the transition. The `:hover` state only lists what **changes** — the darker background, a glowing shadow, and a slight scale-up. The transition smoothly animates between the two.
+
+Here's a nav link with a simple color change on hover:
+
+```html
+<style>
+  nav a {
+    color: #666;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  nav a:hover {
+    color: #f5576c;
+  }
+</style>
+```
+
+Quick and clean. The link shifts from gray to pink in 0.2 seconds. Adding `cursor: pointer` is a good habit for clickable elements that aren't links (like styled divs or buttons).
+
+## Try It Yourself
+
+<CodeExercise language="html">
+<Instructions>
+You have a styled button, but it feels lifeless — nothing happens on hover. Fix that:
+
+1. Add a `transition: all 0.3s ease;` rule to the `.btn` selector.
+2. Create a `.btn:hover` rule that changes `background-color` to `#e0314b` and adds `box-shadow: 0 4px 15px rgba(245, 87, 108, 0.4);`.
+</Instructions>
+
+<StartingCode>
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: #f5576c;
+      color: white;
+      padding: 16px 36px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      /* TODO: Add a transition here */
+    }
+
+    /* TODO: Add a .btn:hover rule below */
+  </style>
+</head>
+<body>
+  <a href="#" class="btn">Hire Me</a>
+</body>
+</html>
+</StartingCode>
+
+<Solution>
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: #f5576c;
+      color: white;
+      padding: 16px 36px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #e0314b;
+      box-shadow: 0 4px 15px rgba(245, 87, 108, 0.4);
+    }
+  </style>
+</head>
+<body>
+  <a href="#" class="btn">Hire Me</a>
+</body>
+</html>
+</Solution>
+
+<Validation>
+Hover over the button. It should smoothly change from bright pink (#f5576c) to a deeper pink (#e0314b) and gain a soft pink glow beneath it. When you move your mouse away, it should smoothly fade back. No snapping — just a clean 0.3-second animation.
+</Validation>
+</CodeExercise>
+
+## Recap
+
+- ✅ `:hover` applies styles when the mouse is over an element — instant visual feedback that makes your site feel alive
+- ✅ `transition` makes those changes animate smoothly instead of snapping — `0.3s ease` is a great default
+- ✅ Put `transition` on the **base selector**, not the `:hover` — it controls the animation in both directions (in and out)

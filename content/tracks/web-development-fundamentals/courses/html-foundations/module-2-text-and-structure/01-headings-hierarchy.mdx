@@ -1,0 +1,81 @@
+---
+title: "Headings Hierarchy"
+slug: "headings-hierarchy"
+module: "Text & Structure"
+moduleSlug: "text-and-structure"
+course: "HTML Foundations"
+courseSlug: "html-foundations"
+order: 4
+estimatedMinutes: 6
+---
+
+# Headings Hierarchy
+
+<Hook>
+Open any news website — you'll notice a big, bold headline at the top, smaller section headings below, and even smaller subheadings within those sections. This visual hierarchy isn't just for looks — it tells both readers AND search engines what's most important on the page. HTML gives you six levels of headings to create this structure.
+</Hook>
+
+## The Concept
+
+HTML gives you **six heading tags**: `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, and `<h6>`. Think of them like an outline for a book.
+
+`<h1>` is the **most important** — it's the main title of your page. `<h6>` is the **least important**. Each level in between represents a step down in significance.
+
+Here's the golden rule: **a page should have only one `<h1>`**. Just like a book has one title, your page should have one main heading. Everything else branches out beneath it.
+
+Think of headings like chapters and subchapters. Your `<h1>` is the book title. Your `<h2>` tags are chapter titles. Your `<h3>` tags are sections *within* those chapters. And so on.
+
+**Never skip heading levels.** Don't jump from `<h1>` straight to `<h4>`. That's like a book going from "Chapter 1" directly to "Section 1.1.1" — it confuses both readers and search engines.
+
+Search engines like Google **use headings to understand your content**. A well-structured heading hierarchy helps your page rank better in search results.
+
+The browser automatically makes headings bigger and bolder — `<h1>` is the largest, `<h6>` is the smallest. But remember: their real purpose is **semantic meaning**, not visual styling. They tell the *structure* of your content, not just how it looks.
+
+## The Syntax
+
+```html
+<h1>My Travel Blog</h1>
+
+<h2>Trip to Japan</h2>
+<h3>Day 1: Arriving in Tokyo</h3>
+<p>We landed at Narita Airport early in the morning...</p>
+
+<h3>Day 2: Exploring Shibuya</h3>
+<p>The famous Shibuya crossing was incredible...</p>
+
+<h2>Trip to Italy</h2>
+<h3>Day 1: Rome at Last</h3>
+<p>The Colosseum took my breath away...</p>
+```
+
+Notice how the headings create a clear outline. The `<h1>` is the blog title. Each `<h2>` is a major trip. Each `<h3>` is a day within that trip. A reader — or a search engine — can instantly understand the structure of this page.
+
+## Try It Yourself
+
+<CodeExercise language="html">
+<Instructions>
+The heading hierarchy below is broken — the article title uses `<h5>` when it should be an `<h2>`. Fix it by changing the `<h5>` tag to an `<h2>` tag (don't forget the closing tag too!).
+</Instructions>
+
+<StartingCode>
+<h1>My Blog</h1>
+<h5>About Me</h5>
+<p>I love coding.</p>
+</StartingCode>
+
+<Solution>
+<h1>My Blog</h1>
+<h2>About Me</h2>
+<p>I love coding.</p>
+</Solution>
+
+<Validation>
+The page should show "My Blog" as a large main heading and "About Me" as a slightly smaller section heading directly beneath it — no awkward size jump between them.
+</Validation>
+</CodeExercise>
+
+## Recap
+
+- ✅ HTML has 6 heading levels — `<h1>` (biggest/most important) to `<h6>` (smallest)
+- ✅ Use only one `<h1>` per page and never skip heading levels
+- ✅ Headings help search engines AND users understand your page structure

@@ -1,0 +1,835 @@
+---
+title: "Final Project: Style the Copywriter Landing Page"
+slug: "style-the-landing-page"
+module: "Interactivity & Launch"
+moduleSlug: "interactivity-and-launch"
+course: "CSS Essentials"
+courseSlug: "css-essentials"
+order: 14
+estimatedMinutes: 15
+---
+
+# Final Project: Style the Copywriter Landing Page
+
+<Hook>
+This is the moment two courses have been building toward. In HTML Foundations, you built the structure. In CSS Essentials, you learned colors, fonts, layout, hover effects, and responsive design. Now you combine **everything** to transform your plain HTML landing page into a polished, professional website that a freelance copywriter would be proud to show clients. This is YOUR portfolio piece.
+</Hook>
+
+## The Concept
+
+This lesson is a **guided build**. We're going to walk through the complete CSS needed to style Sarah Chen's landing page, section by section. You've already learned every concept we'll use — this is where it all clicks together.
+
+Here's the game plan:
+
+**1. Global Reset & Font** — We start with `box-sizing: border-box` on everything and set the Inter font. This gives us a clean, predictable foundation.
+
+**2. Navigation** — Flexbox centers the links in a row. Uppercase text and letter-spacing give it a polished, professional feel. Hover effects add interactivity.
+
+**3. Hero Header** — A dark gradient background (`#1a1a2e` to `#16213e`) creates a dramatic first impression. Large, bold text and a bright CTA button demand attention.
+
+**4. About Section** — Flexbox places the image and text side-by-side. A `border-radius` on the image softens it.
+
+**5. Services** — We remove default bullet points and add a colored left border to each list item. Clean and modern.
+
+**6. Selected Work** — The ordered list gets breathing room, and the `<em>` results stand out in the accent color.
+
+**7. Contact** — Centered text with a styled link.
+
+**8. Footer** — Dark background mirrors the hero. Small, centered text.
+
+**9. Responsive** — A media query stacks everything vertically on mobile, reduces font sizes, and makes images flexible.
+
+The color scheme: **dark navy** (`#1a1a2e`) for the hero and footer, **white** for content sections, and a **warm pink accent** (`#f5576c`) for buttons and highlights. The Inter font keeps everything clean and modern.
+
+**This is YOUR page.** You can change every color, every font size, every spacing decision. The goal is to have a **complete, working, responsive landing page** by the end of this lesson.
+
+## The Syntax
+
+Here's the complete reference stylesheet. Read through it section by section — you'll recognize every property:
+
+```css
+/* ===========================
+   GLOBAL RESET & TYPOGRAPHY
+   =========================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: #333;
+  line-height: 1.7;
+}
+
+/* ===========================
+   NAVIGATION
+   =========================== */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  padding: 20px;
+  background-color: #1a1a2e;
+}
+
+nav a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #ffffff;
+}
+
+/* ===========================
+   HERO HEADER
+   =========================== */
+header {
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  color: white;
+  text-align: center;
+  padding: 80px 20px;
+}
+
+header h1 {
+  font-size: 56px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+header p {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 12px;
+}
+
+.cta-button {
+  display: inline-block;
+  background-color: #f5576c;
+  color: white;
+  padding: 14px 36px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 16px;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #e0314b;
+  box-shadow: 0 4px 20px rgba(245, 87, 108, 0.4);
+  transform: scale(1.05);
+}
+
+/* ===========================
+   CONTENT SECTIONS
+   =========================== */
+section {
+  padding: 60px 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+section h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: #1a1a2e;
+}
+
+/* ===========================
+   ABOUT SECTION
+   =========================== */
+#about {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+#about img {
+  border-radius: 12px;
+  width: 250px;
+}
+
+#about p {
+  font-size: 17px;
+}
+
+/* ===========================
+   SERVICES SECTION
+   =========================== */
+#services ul {
+  list-style: none;
+}
+
+#services li {
+  padding: 14px 20px;
+  border-left: 4px solid #f5576c;
+  margin-bottom: 12px;
+  font-size: 17px;
+  background-color: #fafafa;
+  border-radius: 0 8px 8px 0;
+}
+
+/* ===========================
+   SELECTED WORK SECTION
+   =========================== */
+#work ol {
+  padding-left: 24px;
+}
+
+#work li {
+  padding: 12px 0;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+#work em {
+  color: #f5576c;
+  font-weight: 600;
+}
+
+/* ===========================
+   CONTACT SECTION
+   =========================== */
+#contact {
+  text-align: center;
+}
+
+#contact a {
+  color: #f5576c;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+#contact a:hover {
+  color: #e0314b;
+}
+
+/* ===========================
+   FOOTER
+   =========================== */
+footer {
+  background-color: #1a1a2e;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  padding: 24px 20px;
+  font-size: 14px;
+}
+
+/* ===========================
+   RESPONSIVE — MOBILE
+   =========================== */
+@media (max-width: 768px) {
+  header {
+    padding: 50px 20px;
+  }
+
+  header h1 {
+    font-size: 36px;
+  }
+
+  nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  #about {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  #about img {
+    width: 100%;
+    max-width: 350px;
+  }
+
+  section {
+    padding: 40px 20px;
+  }
+}
+```
+
+That's roughly **120 lines** of CSS — and you understand every single one. Colors, fonts, flexbox, hover effects, transitions, gradients, media queries. Everything from this course working together.
+
+## Try It Yourself
+
+<CodeExercise language="html">
+<Instructions>
+The landing page is almost fully styled — but four pieces are missing. Find the four `/* TODO */` comments and fill them in:
+
+1. **Hero gradient:** Add `background: linear-gradient(135deg, #1a1a2e, #16213e);` to the `header`.
+2. **CTA button styling:** Add `padding: 14px 36px;`, `border-radius: 8px;`, and `background-color: #f5576c;` to `.cta-button`.
+3. **CTA hover effect:** Add `background-color: #e0314b;` and `box-shadow: 0 4px 20px rgba(245, 87, 108, 0.4);` to `.cta-button:hover`.
+4. **Mobile about section:** Inside the media query, add `flex-direction: column;` and `text-align: center;` to `#about`.
+</Instructions>
+
+<StartingCode>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sarah Chen | Freelance Copywriter</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ===========================
+       GLOBAL RESET & TYPOGRAPHY
+       =========================== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #333;
+      line-height: 1.7;
+    }
+
+    /* ===========================
+       NAVIGATION
+       =========================== */
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      padding: 20px;
+      background-color: #1a1a2e;
+    }
+
+    nav a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #ffffff;
+    }
+
+    /* ===========================
+       HERO HEADER
+       =========================== */
+    header {
+      color: white;
+      text-align: center;
+      padding: 80px 20px;
+      /* TODO 1: Add the gradient background here */
+    }
+
+    header h1 {
+      font-size: 56px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    header p {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 12px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 16px;
+      margin-top: 20px;
+      transition: all 0.3s ease;
+      /* TODO 2: Add padding, border-radius, and background-color */
+    }
+
+    .cta-button:hover {
+      transform: scale(1.05);
+      /* TODO 3: Add hover background-color and box-shadow */
+    }
+
+    /* ===========================
+       CONTENT SECTIONS
+       =========================== */
+    section {
+      padding: 60px 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    section h2 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      color: #1a1a2e;
+    }
+
+    /* ===========================
+       ABOUT SECTION
+       =========================== */
+    #about {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+    }
+
+    #about img {
+      border-radius: 12px;
+      width: 250px;
+    }
+
+    #about p {
+      font-size: 17px;
+    }
+
+    /* ===========================
+       SERVICES SECTION
+       =========================== */
+    #services ul {
+      list-style: none;
+    }
+
+    #services li {
+      padding: 14px 20px;
+      border-left: 4px solid #f5576c;
+      margin-bottom: 12px;
+      font-size: 17px;
+      background-color: #fafafa;
+      border-radius: 0 8px 8px 0;
+    }
+
+    /* ===========================
+       SELECTED WORK SECTION
+       =========================== */
+    #work ol {
+      padding-left: 24px;
+    }
+
+    #work li {
+      padding: 12px 0;
+      font-size: 17px;
+      line-height: 1.6;
+    }
+
+    #work em {
+      color: #f5576c;
+      font-weight: 600;
+    }
+
+    /* ===========================
+       CONTACT SECTION
+       =========================== */
+    #contact {
+      text-align: center;
+    }
+
+    #contact a {
+      color: #f5576c;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    #contact a:hover {
+      color: #e0314b;
+    }
+
+    /* ===========================
+       FOOTER
+       =========================== */
+    footer {
+      background-color: #1a1a2e;
+      color: rgba(255, 255, 255, 0.5);
+      text-align: center;
+      padding: 24px 20px;
+      font-size: 14px;
+    }
+
+    /* ===========================
+       RESPONSIVE — MOBILE
+       =========================== */
+    @media (max-width: 768px) {
+      header {
+        padding: 50px 20px;
+      }
+
+      header h1 {
+        font-size: 36px;
+      }
+
+      nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+      }
+
+      #about {
+        /* TODO 4: Stack the about section vertically and center the text */
+      }
+
+      #about img {
+        width: 100%;
+        max-width: 350px;
+      }
+
+      section {
+        padding: 40px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#work">Work</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <header>
+    <h1>Sarah Chen</h1>
+    <p><em>Freelance Copywriter</em></p>
+    <p>I write words that <strong>convert visitors into customers</strong>.</p>
+    <a href="#contact" class="cta-button">Hire Me</a>
+  </header>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=300" alt="Sarah Chen smiling at her desk" width="300">
+    <p>I'm a <strong>freelance copywriter</strong> with 5 years of experience helping brands tell their story. I specialize in <em>website copy, email campaigns, and SEO content</em> that doesn't just sound good — it <strong>drives results</strong>.</p>
+  </section>
+
+  <section id="services">
+    <h2>My Services</h2>
+    <ul>
+      <li>Website Copy &amp; Landing Pages</li>
+      <li>Email Marketing Campaigns</li>
+      <li>Blog Posts &amp; SEO Content</li>
+      <li>Social Media Copywriting</li>
+    </ul>
+  </section>
+
+  <section id="work">
+    <h2>Selected Work</h2>
+    <ol>
+      <li>Redesigned landing page copy for TechStart — <em>increased conversions by 40%</em></li>
+      <li>Email sequence for GreenLeaf Organics — <em>generated $12k in first week</em></li>
+      <li>Blog strategy for CloudBase — <em>tripled organic traffic in 3 months</em></li>
+    </ol>
+  </section>
+
+  <section id="contact">
+    <h2>Let's Work Together</h2>
+    <p>Ready to level up your copy? <a href="mailto:sarah@example.com">Send me an email</a> or find me on <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>.</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Sarah Chen. All rights reserved.</p>
+  </footer>
+</body>
+</html>
+</StartingCode>
+
+<Solution>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sarah Chen | Freelance Copywriter</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ===========================
+       GLOBAL RESET & TYPOGRAPHY
+       =========================== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #333;
+      line-height: 1.7;
+    }
+
+    /* ===========================
+       NAVIGATION
+       =========================== */
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      padding: 20px;
+      background-color: #1a1a2e;
+    }
+
+    nav a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #ffffff;
+    }
+
+    /* ===========================
+       HERO HEADER
+       =========================== */
+    header {
+      color: white;
+      text-align: center;
+      padding: 80px 20px;
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+    }
+
+    header h1 {
+      font-size: 56px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    header p {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 12px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 16px;
+      margin-top: 20px;
+      transition: all 0.3s ease;
+      padding: 14px 36px;
+      border-radius: 8px;
+      background-color: #f5576c;
+    }
+
+    .cta-button:hover {
+      transform: scale(1.05);
+      background-color: #e0314b;
+      box-shadow: 0 4px 20px rgba(245, 87, 108, 0.4);
+    }
+
+    /* ===========================
+       CONTENT SECTIONS
+       =========================== */
+    section {
+      padding: 60px 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    section h2 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      color: #1a1a2e;
+    }
+
+    /* ===========================
+       ABOUT SECTION
+       =========================== */
+    #about {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+    }
+
+    #about img {
+      border-radius: 12px;
+      width: 250px;
+    }
+
+    #about p {
+      font-size: 17px;
+    }
+
+    /* ===========================
+       SERVICES SECTION
+       =========================== */
+    #services ul {
+      list-style: none;
+    }
+
+    #services li {
+      padding: 14px 20px;
+      border-left: 4px solid #f5576c;
+      margin-bottom: 12px;
+      font-size: 17px;
+      background-color: #fafafa;
+      border-radius: 0 8px 8px 0;
+    }
+
+    /* ===========================
+       SELECTED WORK SECTION
+       =========================== */
+    #work ol {
+      padding-left: 24px;
+    }
+
+    #work li {
+      padding: 12px 0;
+      font-size: 17px;
+      line-height: 1.6;
+    }
+
+    #work em {
+      color: #f5576c;
+      font-weight: 600;
+    }
+
+    /* ===========================
+       CONTACT SECTION
+       =========================== */
+    #contact {
+      text-align: center;
+    }
+
+    #contact a {
+      color: #f5576c;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    #contact a:hover {
+      color: #e0314b;
+    }
+
+    /* ===========================
+       FOOTER
+       =========================== */
+    footer {
+      background-color: #1a1a2e;
+      color: rgba(255, 255, 255, 0.5);
+      text-align: center;
+      padding: 24px 20px;
+      font-size: 14px;
+    }
+
+    /* ===========================
+       RESPONSIVE — MOBILE
+       =========================== */
+    @media (max-width: 768px) {
+      header {
+        padding: 50px 20px;
+      }
+
+      header h1 {
+        font-size: 36px;
+      }
+
+      nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+      }
+
+      #about {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      #about img {
+        width: 100%;
+        max-width: 350px;
+      }
+
+      section {
+        padding: 40px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#work">Work</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <header>
+    <h1>Sarah Chen</h1>
+    <p><em>Freelance Copywriter</em></p>
+    <p>I write words that <strong>convert visitors into customers</strong>.</p>
+    <a href="#contact" class="cta-button">Hire Me</a>
+  </header>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=300" alt="Sarah Chen smiling at her desk" width="300">
+    <p>I'm a <strong>freelance copywriter</strong> with 5 years of experience helping brands tell their story. I specialize in <em>website copy, email campaigns, and SEO content</em> that doesn't just sound good — it <strong>drives results</strong>.</p>
+  </section>
+
+  <section id="services">
+    <h2>My Services</h2>
+    <ul>
+      <li>Website Copy &amp; Landing Pages</li>
+      <li>Email Marketing Campaigns</li>
+      <li>Blog Posts &amp; SEO Content</li>
+      <li>Social Media Copywriting</li>
+    </ul>
+  </section>
+
+  <section id="work">
+    <h2>Selected Work</h2>
+    <ol>
+      <li>Redesigned landing page copy for TechStart — <em>increased conversions by 40%</em></li>
+      <li>Email sequence for GreenLeaf Organics — <em>generated $12k in first week</em></li>
+      <li>Blog strategy for CloudBase — <em>tripled organic traffic in 3 months</em></li>
+    </ol>
+  </section>
+
+  <section id="contact">
+    <h2>Let's Work Together</h2>
+    <p>Ready to level up your copy? <a href="mailto:sarah@example.com">Send me an email</a> or find me on <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>.</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Sarah Chen. All rights reserved.</p>
+  </footer>
+</body>
+</html>
+</Solution>
+
+<Validation>
+You should see a fully styled, professional landing page. The hero section has a dark navy gradient background with the "Hire Me" button in bright pink. Hovering over the button should make it darken, glow, and grow slightly. Resize the browser — on mobile, the nav stacks vertically, the heading shrinks, and the about section's image stacks above the text. Every section should be clean, well-spaced, and readable.
+</Validation>
+</CodeExercise>
+
+## Recap
+
+- ✅ A professional landing page combines **global resets, typography, colors, flexbox layout, hover effects, and responsive design** — every concept from this course played a role
+- ✅ The complete stylesheet is only ~120 lines — organized by section, commented clearly, and readable
+- ✅ This is **YOUR** landing page — keep iterating on it as you learn new skills
+
+---
+
+🎉 **Congratulations!** You just completed **CSS Essentials**.
+
+Think about what you've accomplished. You started with plain, unstyled HTML. You learned how CSS selects elements, applies colors and fonts, controls spacing with the box model, arranges layouts with flexbox, adds backgrounds, creates hover effects, and adapts to any screen size. And you didn't just learn theory — you **built something real**.
+
+This landing page is a genuine portfolio piece. A freelance copywriter could use this site *today*. You made that.
+
+**What's next?** In the **Sass Fundamentals** course, you'll learn to write CSS that's easier to maintain and more powerful — with variables (so you can change your entire color scheme in one line), nesting (so you stop repeating selectors), and mixins (reusable style recipes). Everything you learned here carries forward. Nothing was wasted.
+
+Keep building. Keep experimenting. You're a web developer now. 🚀

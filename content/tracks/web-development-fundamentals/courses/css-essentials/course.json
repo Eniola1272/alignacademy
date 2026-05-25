@@ -1,0 +1,81 @@
+{
+  "id": "css-essentials",
+  "slug": "css-essentials",
+  "title": "CSS Essentials",
+  "description": "Take the landing page you built in HTML Foundations and transform it into a polished, professional design. Learn colors, typography, layout, and interactivity — everything you need to make websites look stunning.",
+  "language": "css",
+  "difficulty": "beginner",
+  "order": 2,
+  "trackSlug": "web-development-fundamentals",
+  "estimatedHours": 3,
+  "totalLessons": 14,
+  "modules": [
+    {
+      "slug": "module-1-your-first-styles",
+      "title": "Your First Styles",
+      "order": 1,
+      "description": "Discover what CSS is, learn how selectors target HTML elements, and add your first colors to the landing page.",
+      "lessons": [
+        { "slug": "01-what-is-css", "order": 1 },
+        { "slug": "02-selectors-and-properties", "order": 2 },
+        { "slug": "03-colors-in-css", "order": 3 }
+      ]
+    },
+    {
+      "slug": "module-2-typography-and-spacing",
+      "title": "Typography & Spacing",
+      "order": 2,
+      "description": "Transform plain text into beautiful typography with custom fonts, sizing, spacing, and the all-important box model.",
+      "lessons": [
+        { "slug": "01-font-families", "order": 4 },
+        { "slug": "02-font-size-and-weight", "order": 5 },
+        { "slug": "03-text-styling", "order": 6 },
+        { "slug": "04-the-box-model", "order": 7 }
+      ]
+    },
+    {
+      "slug": "module-3-layout-and-visuals",
+      "title": "Layout & Visuals",
+      "order": 3,
+      "description": "Control how elements are positioned on the page with display properties, flexbox, and stunning background effects.",
+      "lessons": [
+        { "slug": "01-display-property", "order": 8 },
+        { "slug": "02-width-and-centering", "order": 9 },
+        { "slug": "03-flexbox", "order": 10 },
+        { "slug": "04-backgrounds-and-gradients", "order": 11 }
+      ]
+    },
+    {
+      "slug": "module-4-interactivity-and-launch",
+      "title": "Interactivity & Launch",
+      "order": 4,
+      "description": "Add hover effects, transitions, responsive design, and pull everything together to launch your styled landing page.",
+      "lessons": [
+        { "slug": "01-hover-and-transitions", "order": 12 },
+        { "slug": "02-responsive-design", "order": 13 },
+        { "slug": "03-style-the-landing-page", "order": 14 }
+      ]
+    }
+  ],
+  "prerequisites": ["html-foundations"],
+  "certificatePrice": {
+    "amount": 15000,
+    "currency": "NGN"
+  },
+  "learningOutcomes": [
+    "Understand what CSS is and how it connects to HTML",
+    "Use selectors to target specific HTML elements for styling",
+    "Apply colors using hex, RGB, and HSL color systems",
+    "Style text with custom fonts, sizes, weights, and spacing",
+    "Understand and use the CSS box model (margin, padding, border)",
+    "Create layouts using display properties and flexbox",
+    "Add backgrounds, gradients, hover effects, and transitions",
+    "Build responsive designs that work on mobile and desktop",
+    "Style a complete, professional-looking landing page from scratch"
+  ],
+  "connectedProject": {
+    "description": "Students style the copywriter landing page they built in the HTML Foundations final project. Each module progressively transforms the plain HTML into a polished design.",
+    "htmlSourceCourse": "html-foundations",
+    "finalProduct": "A fully styled, responsive landing page for a freelance copywriter"
+  }
+}

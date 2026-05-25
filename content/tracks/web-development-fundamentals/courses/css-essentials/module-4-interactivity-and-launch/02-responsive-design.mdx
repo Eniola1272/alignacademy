@@ -1,0 +1,308 @@
+---
+title: "Responsive Design & Media Queries"
+slug: "responsive-design"
+module: "Interactivity & Launch"
+moduleSlug: "interactivity-and-launch"
+course: "CSS Essentials"
+courseSlug: "css-essentials"
+order: 13
+estimatedMinutes: 8
+---
+
+# Responsive Design & Media Queries
+
+<Hook>
+More than half of all web traffic comes from phones. If your landing page looks great on a laptop but broken on a phone, you've lost half your potential clients before they even read your headline. Responsive design makes your page look perfect on **every** screen size — and CSS makes it surprisingly simple.
+</Hook>
+
+## The Concept
+
+Imagine you wrote a letter on a big sheet of paper. It looks great. Now someone asks you to fit it on a postcard. You wouldn't just shrink everything until it's unreadable — you'd **reorganize**. Bigger heading, shorter paragraphs, stack things vertically. That's responsive design.
+
+### Step Zero: The Viewport Meta Tag
+
+Before any CSS, you need this line in your HTML `<head>`:
+
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+```
+
+Without it, phones render your page as if it's a desktop screen and zoom out to fit everything. The result? Tiny, unreadable text. This tag tells the browser: *"Make the page width match this device's actual screen width."* **Always include it.**
+
+### Media Queries
+
+A **media query** is a CSS rule that only applies when certain conditions are met. The syntax looks like this:
+
+```css
+@media (max-width: 768px) {
+  /* These rules ONLY apply on screens 768px wide or smaller */
+}
+```
+
+Everything inside the curly braces is **ignored** on larger screens. It only kicks in when the browser window shrinks to 768px or less — roughly tablet size. For phones, 480px is another common **breakpoint** (the screen width where your design needs to change).
+
+### What to Change on Mobile
+
+When the screen gets small, you typically need to:
+
+- **Stack layouts vertically** — change `flex-direction` to `column`
+- **Reduce font sizes** — a 48px heading is way too big on a phone
+- **Reduce padding** — big padding wastes precious small-screen space
+- **Make images flexible** — set `width: 100%` so they fill their container
+- **Simplify** — hide non-essential elements if needed
+
+## The Syntax
+
+Here's how you'd make a landing page respond to smaller screens:
+
+```html
+<style>
+  /* --- Desktop styles (the default) --- */
+  nav {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 48px;
+  }
+
+  .about-section {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+  }
+
+  .about-section img {
+    width: 300px;
+    border-radius: 12px;
+  }
+
+  /* --- Mobile override (screens up to 768px) --- */
+  @media (max-width: 768px) {
+    nav {
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    h1 {
+      font-size: 32px;
+    }
+
+    .about-section {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .about-section img {
+      width: 100%;
+    }
+  }
+</style>
+```
+
+Notice the pattern: the desktop styles come first, then the `@media` block **overrides** specific properties for small screens. The nav switches from a horizontal row to a vertical stack. The heading shrinks. The about section stacks its image above the text instead of side-by-side.
+
+The media query only changes what **needs** to change. Every other rule stays the same.
+
+## Try It Yourself
+
+<CodeExercise language="html">
+<Instructions>
+This mini landing page looks fine on desktop but breaks on mobile. Add a media query to fix it:
+
+1. Inside the `@media (max-width: 768px)` block, set `nav` to `flex-direction: column;` and `align-items: center;`.
+2. Change `h1` font-size to `32px`.
+3. Set `img` width to `100%`.
+</Instructions>
+
+<StartingCode>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      color: #333;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      padding: 16px;
+      background-color: #1a1a2e;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    header {
+      text-align: center;
+      padding: 60px 20px;
+      background-color: #16213e;
+      color: white;
+    }
+
+    h1 {
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+
+    .about {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+      padding: 40px 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .about img {
+      width: 250px;
+      border-radius: 12px;
+    }
+
+    /* TODO: Add your media query below */
+
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Work</a>
+    <a href="#">Contact</a>
+  </nav>
+  <header>
+    <h1>Sarah Chen</h1>
+    <p>Freelance Copywriter</p>
+  </header>
+  <section class="about">
+    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=300" alt="Sarah Chen">
+    <p>I'm a freelance copywriter with 5 years of experience helping brands tell their story.</p>
+  </section>
+</body>
+</html>
+</StartingCode>
+
+<Solution>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      color: #333;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      padding: 16px;
+      background-color: #1a1a2e;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    header {
+      text-align: center;
+      padding: 60px 20px;
+      background-color: #16213e;
+      color: white;
+    }
+
+    h1 {
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+
+    .about {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+      padding: 40px 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .about img {
+      width: 250px;
+      border-radius: 12px;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      h1 {
+        font-size: 32px;
+      }
+
+      .about {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .about img {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Work</a>
+    <a href="#">Contact</a>
+  </nav>
+  <header>
+    <h1>Sarah Chen</h1>
+    <p>Freelance Copywriter</p>
+  </header>
+  <section class="about">
+    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=300" alt="Sarah Chen">
+    <p>I'm a freelance copywriter with 5 years of experience helping brands tell their story.</p>
+  </section>
+</body>
+</html>
+</Solution>
+
+<Validation>
+Resize your browser window. On wide screens, the nav links sit in a horizontal row, the heading is large, and the image sits beside the text. When the window shrinks below 768px, the nav links should stack vertically and center, the heading should shrink to 32px, and the image should stretch to fill the full width with the text below it.
+</Validation>
+</CodeExercise>
+
+## Recap
+
+- ✅ The viewport meta tag is **required** — without it, phones zoom out and everything is tiny
+- ✅ `@media` queries apply CSS rules only at certain screen sizes — `768px` is a common breakpoint for tablet and below
+- ✅ On mobile: stack layouts vertically with `flex-direction: column`, reduce font sizes, and make images flexible with `width: 100%`

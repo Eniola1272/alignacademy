@@ -1,0 +1,76 @@
+---
+title: "Adding Images"
+slug: "adding-images"
+module: "Media & Links"
+moduleSlug: "media-and-links"
+course: "HTML Foundations"
+courseSlug: "html-foundations"
+order: 10
+estimatedMinutes: 7
+---
+
+# Adding Images
+
+<Hook>
+A web page without images is like a book without illustrations — it works, but it's missing something. Images bring your content to life, tell visual stories, and keep users engaged. And adding one is simpler than you might think.
+</Hook>
+
+## The Concept
+
+The **`<img>`** tag lets you embed images into your web page. It's a **self-closing** (or "void") element — that means it has **no closing tag**. There's no `</img>`. The tag stands alone because it doesn't wrap around any text content.
+
+The `<img>` tag has two essential attributes:
+
+- **`src`** (source) — The URL or file path to the image. This tells the browser *where to find* the image. It can be a full web address like `https://example.com/photo.jpg` or a relative path to a local file like `images/photo.jpg`.
+- **`alt`** (alternative text) — A short description of the image. Screen readers read this aloud for visually impaired users, and it appears as fallback text when the image fails to load.
+
+You can also add **`width`** and **`height`** attributes to specify the image's dimensions in pixels. This helps the browser **reserve the right amount of space** before the image loads, preventing your page from "jumping" around as images appear. This jumpiness is called a **layout shift**, and it's frustrating for users.
+
+Here are the most common image formats you'll encounter:
+
+- **JPG** — Best for photographs and complex images
+- **PNG** — Supports transparency, great for graphics and logos
+- **SVG** — Scalable vector graphics, perfect for icons and logos
+- **WebP** — A modern format with smaller file sizes and great quality
+
+## The Syntax
+
+```html
+<img src="https://via.placeholder.com/300x200" alt="A placeholder image" width="300" height="200">
+```
+
+Let's break this down:
+
+- **`<img>`** — The image tag. No closing tag needed.
+- **`src="..."`** — Points to where the image lives. This can be a URL or a file path.
+- **`alt="A placeholder image"`** — Describes the image for accessibility and fallback display.
+- **`width="300"` and `height="200"`** — Optional but recommended. Sets the display size in pixels and prevents layout shifts.
+
+## Try It Yourself
+
+<CodeExercise language="html">
+<Instructions>
+Add an image below the comment using the provided URL. Don't forget to include an `alt` attribute that describes the image.
+</Instructions>
+
+<StartingCode>
+<!-- Add an image below this line -->
+<!-- Image URL: https://via.placeholder.com/400x300 -->
+</StartingCode>
+
+<Solution>
+<!-- Add an image below this line -->
+<!-- Image URL: https://via.placeholder.com/400x300 -->
+<img src="https://via.placeholder.com/400x300" alt="A sample image">
+</Solution>
+
+<Validation>
+A 400×300 placeholder image should appear on the page. If you inspect the code, the `<img>` tag should have both a `src` attribute with the correct URL and an `alt` attribute with a descriptive text.
+</Validation>
+</CodeExercise>
+
+## Recap
+
+- ✅ The `<img>` tag is self-closing — it doesn't need a closing tag
+- ✅ The `src` attribute points to the image file and `alt` describes it
+- ✅ Always include `alt` text for accessibility and SEO

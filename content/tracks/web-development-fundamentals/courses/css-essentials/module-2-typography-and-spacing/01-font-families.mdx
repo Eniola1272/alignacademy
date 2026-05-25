@@ -1,0 +1,124 @@
+---
+title: "Font Families"
+slug: "font-families"
+module: "Typography & Spacing"
+moduleSlug: "typography-and-spacing"
+course: "CSS Essentials"
+courseSlug: "css-essentials"
+order: 4
+estimatedMinutes: 7
+---
+
+# Font Families
+
+<Hook>
+Every time you visit a website, the fonts do heavy lifting before you read a single word. A law firm using Comic Sans feels unprofessional. A children's site using a rigid serif feels cold. The right font instantly communicates who you are. Let's give your copywriter landing page a font that says "creative professional."
+</Hook>
+
+## The Concept
+
+When a browser displays text, it needs to know **which font to use**. That's where the `font-family` property comes in. It tells the browser: "Use *this* font to render the text."
+
+By default, browsers use a plain system font — usually Times New Roman. It's fine for a term paper, but it won't win any design awards.
+
+You have three options for choosing fonts:
+
+**Web-safe fonts** like Arial, Georgia, and Verdana are installed on virtually every computer. They're reliable but boring — you'll see them on millions of websites.
+
+**Google Fonts** is a free library of over 1,500 beautiful fonts. You add them to your page with a special `<link>` tag, and suddenly you have access to fonts like **Inter**, **Poppins**, and **Outfit** — modern, clean, professional typefaces perfect for a copywriter's brand.
+
+**Font stacks** are your safety net. Instead of specifying one font, you list several in order of preference: `font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;`. The browser tries the first font. If it's not available, it moves to the next, and the next, until it finds one that works.
+
+The last item in the stack should always be a **generic family**:
+- **`serif`** — fonts with small decorative "feet" on each letter (like Times New Roman). They feel traditional and formal.
+- **`sans-serif`** — fonts with clean, smooth edges (like Arial). They feel modern and friendly.
+- **`monospace`** — every character takes the same width (like code editors use).
+
+Think of a font stack like a restaurant order: "I'll have the salmon, but if you're out, I'll take the chicken, and if you're out of that too, just give me whatever fish you have."
+
+## The Syntax
+
+First, add the Google Font to your HTML `<head>` with a `<link>` tag:
+
+```html
+<head>
+  <!-- Load the Inter font from Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+```
+
+Then apply it in your CSS with a font stack:
+
+```css
+/* Apply Inter to the entire page */
+body {
+  font-family: 'Inter', sans-serif;
+}
+```
+
+The `wght@400;600;700` part in the link tells Google Fonts which **weights** to load — regular (400), semi-bold (600), and bold (700). Loading only what you need keeps your page fast.
+
+Once it's on the `body`, every element on the page inherits this font automatically. Headings, paragraphs, links — everything gets Inter unless you specifically override it.
+
+## Try It Yourself
+
+<CodeExercise language="html">
+<Instructions>
+1. Add the Google Font link for "Inter" inside the `<head>` (replace the comment placeholder).
+2. In the `<style>` tag, set the body's `font-family` to `'Inter', sans-serif`.
+
+Watch how the text transforms from the boring browser default to a clean, modern font!
+</Instructions>
+
+<StartingCode>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Copywriter Landing Page</title>
+  <!-- Add the Google Font link here -->
+  <style>
+    body {
+      /* Add font-family here */
+    }
+  </style>
+</head>
+<body>
+  <h1>Words That Work</h1>
+  <p>I help brands find their voice and tell stories that convert.</p>
+  <h2>About Me</h2>
+  <p>I'm a freelance copywriter who turns ideas into compelling content.</p>
+</body>
+</html>
+</StartingCode>
+
+<Solution>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Copywriter Landing Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <h1>Words That Work</h1>
+  <p>I help brands find their voice and tell stories that convert.</p>
+  <h2>About Me</h2>
+  <p>I'm a freelance copywriter who turns ideas into compelling content.</p>
+</body>
+</html>
+</Solution>
+
+<Validation>
+The page text should switch from the default serif font (Times New Roman) to a clean, modern sans-serif font (Inter). All text on the page — the headings and paragraphs — should look noticeably different.
+</Validation>
+</CodeExercise>
+
+## Recap
+
+- ✅ `font-family` controls which font the browser uses to display text
+- ✅ Google Fonts gives you 1,500+ free fonts — add them with a `<link>` tag in your HTML `<head>`
+- ✅ Always include fallback fonts in a stack — the browser uses the first available one, with a generic family (`serif`, `sans-serif`, `monospace`) as the final safety net

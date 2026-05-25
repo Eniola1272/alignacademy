@@ -1,0 +1,100 @@
+---
+title: "The Body"
+slug: "the-body"
+module: "First Steps"
+moduleSlug: "first-steps"
+course: "HTML Foundations"
+courseSlug: "html-foundations"
+order: 3
+estimatedMinutes: 8
+---
+
+# The Body
+
+<Hook>
+Right now, you know how to create individual elements. But a real web page isn't just floating tags — it has structure. Think of it like a letter: there's an envelope (the HTML document), a header (metadata the reader doesn't see), and the actual letter inside (the body). Everything visible on a web page lives inside the `<body>` tag.
+</Hook>
+
+## The Concept
+
+Every HTML page follows the same basic structure. It's like a **skeleton** that every web page is built on. Let's walk through each piece:
+
+**`<!DOCTYPE html>`** — This goes at the very top. It tells the browser, "Hey, this is an HTML5 document." It's not really a tag — it's a declaration. Just always include it on line one.
+
+**`<html>`** — This wraps *everything* else. Think of it as the outer container that holds your entire page.
+
+**`<head>`** — This is the **backstage crew**. It contains information *about* your page — like the page title that appears in the browser tab, links to stylesheets, and other metadata. Users never see what's inside the `<head>` directly on the page.
+
+**`<body>`** — This is the **performance**. Everything the audience (your users) actually sees lives here. Headings, paragraphs, images, buttons — if it's visible on the page, it belongs inside `<body>`.
+
+Here's the key rule: **visible content goes inside `<body>`**. If you accidentally place something outside the body, the browser might still show it — but it's wrong, and it can cause unexpected problems down the road.
+
+## The Syntax
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My First Page</title>
+  </head>
+  <body>
+    <h1>Welcome!</h1>
+    <p>This is my very first web page.</p>
+  </body>
+</html>
+```
+
+Here's what each part does:
+
+- `<!DOCTYPE html>` tells the browser to use HTML5 (the latest version)
+- `<html>` wraps the entire document
+- `<head>` holds the page title — notice it says "My First Page" in the browser tab, not on the page itself
+- `<body>` holds the heading and paragraph — this is what users actually see
+
+Notice how the code is **indented**. Each nested element is pushed in by two spaces. This isn't required, but it makes your code much easier to read. Good habits start early!
+
+## Try It Yourself
+
+<CodeExercise language="html">
+<Instructions>
+Oh no — the `<h1>My Page</h1>` heading is in the wrong place! It's sitting between `</head>` and `<body>` instead of *inside* the body.
+
+Move the `<h1>My Page</h1>` element so it's inside the `<body>` tags, right before the paragraph.
+</Instructions>
+
+<StartingCode>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Page</title>
+  </head>
+  <h1>My Page</h1>
+  <body>
+    <p>Welcome to my website.</p>
+  </body>
+</html>
+</StartingCode>
+
+<Solution>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Page</title>
+  </head>
+  <body>
+    <h1>My Page</h1>
+    <p>Welcome to my website.</p>
+  </body>
+</html>
+</Solution>
+
+<Validation>
+The `h1` heading should now be inside the `body` tags, appearing before the paragraph. The page should display both the heading "My Page" and the paragraph text properly.
+</Validation>
+</CodeExercise>
+
+## Recap
+
+- ✅ Every HTML page has the same skeleton: **DOCTYPE**, **html**, **head**, and **body**
+- ✅ The `<head>` holds invisible metadata — the `<body>` holds everything you see
+- ✅ Always place your visible content inside the `<body>` tags

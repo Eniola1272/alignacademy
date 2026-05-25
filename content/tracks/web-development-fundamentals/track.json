@@ -1,0 +1,41 @@
+{
+  "id": "web-development-fundamentals",
+  "slug": "web-development-fundamentals",
+  "title": "Web Development Fundamentals",
+  "description": "Master the building blocks of the web. Start with HTML structure, move through CSS styling and Sass preprocessing, then bring it all to life with JavaScript and TypeScript. By the end of this track, you'll be able to build complete, interactive websites from scratch.",
+  "order": 1,
+  "courses": [
+    {
+      "courseSlug": "html-foundations",
+      "order": 1,
+      "status": "published"
+    },
+    {
+      "courseSlug": "css-essentials",
+      "order": 2,
+      "status": "published"
+    },
+    {
+      "courseSlug": "sass-fundamentals",
+      "order": 3,
+      "status": "coming-soon"
+    },
+    {
+      "courseSlug": "javascript-basics",
+      "order": 4,
+      "status": "coming-soon"
+    },
+    {
+      "courseSlug": "typescript-intro",
+      "order": 5,
+      "status": "coming-soon"
+    }
+  ],
+  "estimatedHours": 25,
+  "difficulty": "beginner",
+  "certificatePrice": {
+    "amount": 40000,
+    "currency": "NGN",
+    "note": "Track certificate available after completing all 5 course certificates"
+  }
+}

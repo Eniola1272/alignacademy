@@ -1,0 +1,184 @@
+---
+title: "Colors in CSS"
+slug: "colors-in-css"
+module: "Your First Styles"
+moduleSlug: "your-first-styles"
+course: "CSS Essentials"
+courseSlug: "css-essentials"
+order: 3
+estimatedMinutes: 7
+---
+
+# Colors in CSS
+
+<Hook>
+So far, you've used color names like `blue` and hex codes like `#1a1a2e`. But CSS actually gives you **4 different color systems** — each with its own superpowers. Understanding colors is the first step to giving your landing page a professional brand identity instead of default browser blue.
+</Hook>
+
+## The Concept
+
+Color is the most powerful visual tool you have. Let's break down the four ways CSS lets you define colors:
+
+### 1. Named Colors
+
+CSS has **147 built-in color names** — from `red` and `blue` to fun ones like `tomato`, `cornflowerblue`, and `papayawhip`.
+
+They're easy to remember but limited. You can't fine-tune them, and they won't match a specific brand color.
+
+### 2. Hex Codes
+
+The **most common** color format on the web. A hex code like `#FF5733` is six characters that represent **Red**, **Green**, and **Blue** in pairs:
+
+`#RRGGBB` — each pair ranges from `00` (none) to `FF` (full intensity).
+
+- `#FF0000` = full red, no green, no blue → **red**
+- `#00FF00` = no red, full green, no blue → **green**
+- `#000000` = no red, no green, no blue → **black**
+- `#FFFFFF` = full everything → **white**
+
+*Shorthand tip:* When both characters in each pair are the same, you can shorten it: `#FF0000` becomes `#F00`.
+
+### 3. RGB
+
+Same idea as hex, but with **decimal numbers** (0–255) instead of hex digits:
+
+`rgb(255, 87, 51)` — easier to read if you think in numbers.
+
+Want transparency? Use `rgba()` and add a fourth number from `0` (invisible) to `1` (fully visible):
+
+`rgba(255, 87, 51, 0.5)` — the same orange at **50% opacity**.
+
+### 4. HSL
+
+The most **intuitive** system for designers. HSL stands for **Hue**, **Saturation**, **Lightness**:
+
+- **Hue** (0–360): a position on the color wheel. 0 = red, 120 = green, 240 = blue.
+- **Saturation** (0%–100%): how vivid the color is. 0% = gray, 100% = pure color.
+- **Lightness** (0%–100%): how light or dark. 0% = black, 50% = normal, 100% = white.
+
+`hsl(14, 100%, 60%)` — a warm, vivid orange.
+
+Want transparency? Use `hsla()`: `hsla(14, 100%, 60%, 0.5)`.
+
+HSL is powerful because you can **create color variations** just by adjusting lightness — perfect for hover effects and shading.
+
+### Two Properties, Don't Mix Them Up
+
+- **`color`** sets the **text** color
+- **`background-color`** sets the **background** color
+
+They sound similar, but they do very different things. A common beginner mistake is using `color` when you meant `background-color`.
+
+*Looking ahead: for Sarah Chen's landing page, we'll pick 2–3 brand colors and use them consistently across the entire design. That's how professional websites feel cohesive.*
+
+## The Syntax
+
+Here's the **same orange** expressed in all four color systems:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Color Systems</title>
+    <style>
+        /* The same warm orange — four different ways to write it */
+        .named    { color: tomato; }
+        .hex      { color: #FF5733; }
+        .rgb      { color: rgb(255, 87, 51); }
+        .hsl      { color: hsl(14, 100%, 60%); }
+
+        /* A practical example: styling a page section */
+        body {
+            background-color: #f0ece2;       /* Warm light background */
+        }
+
+        h1 {
+            color: #1a1a2e;                  /* Dark navy text */
+        }
+
+        .highlight-section {
+            background-color: hsl(14, 100%, 95%);  /* Soft orange tint */
+            color: #1a1a2e;
+        }
+    </style>
+</head>
+<body>
+    <h1>Color Systems in CSS</h1>
+
+    <p class="named">This text uses the named color "tomato".</p>
+    <p class="hex">This text uses the hex code #FF5733.</p>
+    <p class="rgb">This text uses rgb(255, 87, 51).</p>
+    <p class="hsl">This text uses hsl(14, 100%, 60%).</p>
+
+    <div class="highlight-section">
+        <p>This section has a soft orange background with dark navy text.</p>
+    </div>
+</body>
+</html>
+```
+
+All four paragraphs at the top appear in nearly the same warm orange — just written differently. The `.highlight-section` shows how `background-color` and `color` work together to create a styled card-like block.
+
+## Try It Yourself
+
+<CodeExercise language="html">
+<Instructions>
+Style the card to look professional:
+1. Give the `.card` a background color of `#1a1a2e` (dark navy)
+2. Give the `.card` a text color of `#ffffff` (white)
+3. Give the `h2` inside the card a color of `hsl(14, 100%, 60%)` (warm orange)
+</Instructions>
+
+<StartingCode>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Color Practice</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Brand Colors</h2>
+        <p>A dark card with an accent color heading. This is how professional sites use color to create contrast and visual hierarchy.</p>
+    </div>
+</body>
+</html>
+</StartingCode>
+
+<Solution>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Color Practice</title>
+    <style>
+        .card {
+            background-color: #1a1a2e;
+            color: #ffffff;
+        }
+
+        h2 {
+            color: hsl(14, 100%, 60%);
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Brand Colors</h2>
+        <p>A dark card with an accent color heading. This is how professional sites use color to create contrast and visual hierarchy.</p>
+    </div>
+</body>
+</html>
+</Solution>
+
+<Validation>
+The card should have a dark navy background with white paragraph text. The h2 heading "Brand Colors" should stand out in a warm orange. The contrast between the dark background and bright text demonstrates professional color usage.
+</Validation>
+</CodeExercise>
+
+## Recap
+
+- ✅ CSS has 4 color systems: named colors, hex (`#RRGGBB`), `rgb()`, and `hsl()`
+- ✅ HSL is the most intuitive — pick a hue, adjust saturation and lightness
+- ✅ `color` sets **text** color, `background-color` sets the **background** — don't mix them up

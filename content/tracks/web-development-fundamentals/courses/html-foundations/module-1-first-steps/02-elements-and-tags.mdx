@@ -1,0 +1,75 @@
+---
+title: "Elements & Tags"
+slug: "elements-and-tags"
+module: "First Steps"
+moduleSlug: "first-steps"
+course: "HTML Foundations"
+courseSlug: "html-foundations"
+order: 2
+estimatedMinutes: 7
+---
+
+# Elements & Tags
+
+<Hook>
+In the last lesson, you changed the text inside some angle brackets. Those angle brackets are the core building blocks of HTML — they're called **tags**. Understanding tags is like learning the alphabet before writing sentences. Once you get this, everything else clicks.
+</Hook>
+
+## The Concept
+
+Every piece of content in HTML is wrapped in **tags**. Tags are instructions you give to the browser. They always use angle brackets: `<` and `>`.
+
+Most tags come in **pairs**:
+
+- An **opening tag** like `<p>` — this says "start here"
+- A **closing tag** like `</p>` — this says "stop here" (notice the forward slash `/`)
+
+Think of it like a **sandwich**. The opening tag is the top slice of bread. The closing tag is the bottom slice. The content in between? That's the filling — the good stuff the user actually sees.
+
+When you combine the opening tag, the content, and the closing tag together, you get an **element**. An element is the complete package:
+
+**Opening tag + Content + Closing tag = Element**
+
+This is the fundamental building block of HTML. Every heading, paragraph, image, and link on a web page is an element.
+
+*Quick note:* Some special elements don't need a closing tag — they're called **void elements**. We'll cover those in a later lesson. For now, just remember that most elements need both an opening and closing tag.
+
+## The Syntax
+
+```html
+<p>This is a paragraph of text.</p>
+```
+
+Let's break this down piece by piece:
+
+- `<p>` — the **opening tag** (tells the browser "a paragraph starts here")
+- `This is a paragraph of text.` — the **content** (what the user sees on the page)
+- `</p>` — the **closing tag** (tells the browser "the paragraph ends here")
+
+The whole thing together — from `<p>` to `</p>` — is the **element**. The browser reads it and displays a paragraph of text on the page.
+
+## Try It Yourself
+
+<CodeExercise language="html">
+<Instructions>
+The text below is missing its tags! Wrap the sentence in paragraph tags by adding `<p>` at the beginning and `</p>` at the end.
+</Instructions>
+
+<StartingCode>
+This is my first paragraph.
+</StartingCode>
+
+<Solution>
+<p>This is my first paragraph.</p>
+</Solution>
+
+<Validation>
+Your text should be wrapped in opening and closing `p` tags. The browser will display it as a properly formatted paragraph.
+</Validation>
+</CodeExercise>
+
+## Recap
+
+- ✅ Tags come in pairs — an **opening tag** and a **closing tag**
+- ✅ The content between tags creates an **element**
+- ✅ Elements are the building blocks of every HTML page

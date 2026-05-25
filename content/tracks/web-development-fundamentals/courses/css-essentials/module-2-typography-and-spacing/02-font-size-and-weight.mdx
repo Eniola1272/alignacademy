@@ -1,0 +1,155 @@
+---
+title: "Font Size & Weight"
+slug: "font-size-and-weight"
+module: "Typography & Spacing"
+moduleSlug: "typography-and-spacing"
+course: "CSS Essentials"
+courseSlug: "css-essentials"
+order: 5
+estimatedMinutes: 7
+---
+
+# Font Size & Weight
+
+<Hook>
+A page where everything is the same size is like someone talking in a monotone — nothing stands out, nothing grabs attention. On a landing page, the hero heading needs to SHOUT, the tagline needs to speak, and the body text needs to whisper. Font size and weight create that visual volume control.
+</Hook>
+
+## The Concept
+
+Two CSS properties work together to create **visual hierarchy** — the art of guiding someone's eye to what matters most.
+
+### Font Size
+
+`font-size` controls how large or small text appears. You can set it using three different unit systems:
+
+**`px` (pixels)** — Absolute and predictable. What you type is what you get. `font-size: 48px` looks the same on every screen. This is the easiest unit to start with, and we'll use it throughout this course.
+
+**`em`** — Relative to the **parent** element's font size. If the parent is `16px`, then `2em` = 32px. Be careful: `em` values *compound* when elements are nested inside each other, which can lead to unexpected sizes.
+
+**`rem`** — Relative to the **root** (`<html>`) element's font size, which defaults to `16px` in most browsers. `1rem` = 16px, `2rem` = 32px. Unlike `em`, `rem` never compounds. It's the most predictable relative unit.
+
+**Why `rem` matters for real projects:** Some users increase their browser's default font size for accessibility. When you use `rem`, your text scales up with their preference. With `px`, it stays fixed. For this course, we'll stick with `px` to keep things simple — but know that `rem` is the professional choice.
+
+### Font Weight
+
+`font-weight` controls how **thick** or **thin** the text strokes appear. Think of it like adjusting the boldness dial:
+
+- **`normal`** (or `400`) — standard text thickness
+- **`bold`** (or `700`) — the classic bold you know from word processors
+- **Numeric values `100` to `900`** — fine control in increments of 100
+
+Lighter weights (200–300) feel **elegant and airy**. Heavier weights (700–900) feel **impactful and confident**. On your copywriter's landing page, the hero heading might use `800` to demand attention, while the tagline sits at `300` for a refined, understated feel.
+
+## The Syntax
+
+```css
+/* The hero heading — big and bold, demands attention */
+h1 {
+  font-size: 48px;
+  font-weight: 800;
+}
+
+/* The tagline — medium and light, elegant contrast */
+.tagline {
+  font-size: 20px;
+  font-weight: 300;
+}
+
+/* Body text — comfortable reading size, normal weight */
+p {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+/* A smaller subheading */
+h2 {
+  font-size: 28px;
+  font-weight: 600;
+}
+```
+
+Notice the pattern: as text gets less important, the size decreases and the weight often gets lighter. This creates a natural **reading flow** — the eye lands on the biggest, boldest text first, then moves down through the hierarchy.
+
+## Try It Yourself
+
+<CodeExercise language="html">
+<Instructions>
+Style the hero section to create visual hierarchy:
+1. Make the `h1` have a `font-size` of `48px` and `font-weight` of `800`.
+2. Make the `.tagline` paragraph have a `font-size` of `20px` and `font-weight` of `300`.
+3. Make the `.body-text` paragraph have a `font-size` of `16px` (you can leave weight as default).
+</Instructions>
+
+<StartingCode>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Copywriter Landing Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Style the heading */
+
+    /* Style the tagline */
+
+    /* Style the body text */
+
+  </style>
+</head>
+<body>
+  <h1>Words That Work</h1>
+  <p class="tagline">I help brands find their voice and tell stories that convert.</p>
+  <p class="body-text">With over five years of experience in copywriting, I craft compelling content that drives results. From landing pages to email campaigns, every word is chosen with purpose.</p>
+</body>
+</html>
+</StartingCode>
+
+<Solution>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Copywriter Landing Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+
+    h1 {
+      font-size: 48px;
+      font-weight: 800;
+    }
+
+    .tagline {
+      font-size: 20px;
+      font-weight: 300;
+    }
+
+    .body-text {
+      font-size: 16px;
+    }
+
+  </style>
+</head>
+<body>
+  <h1>Words That Work</h1>
+  <p class="tagline">I help brands find their voice and tell stories that convert.</p>
+  <p class="body-text">With over five years of experience in copywriting, I craft compelling content that drives results. From landing pages to email campaigns, every word is chosen with purpose.</p>
+</body>
+</html>
+</Solution>
+
+<Validation>
+The h1 heading should be large (48px) and extra bold. The tagline should be medium-sized (20px) and noticeably thinner/lighter than the heading. The body text should be a comfortable reading size (16px) at normal weight. You should clearly see three distinct "levels" of text.
+</Validation>
+</CodeExercise>
+
+## Recap
+
+- ✅ `font-size` controls text size — `px` is absolute, `rem` is relative and accessible-friendly
+- ✅ `font-weight` controls thickness — `400` is normal, `700` is bold, and `100`–`900` gives you fine control
+- ✅ Big, bold headings + lighter body text creates **visual hierarchy** that guides the reader's eye from most important to least

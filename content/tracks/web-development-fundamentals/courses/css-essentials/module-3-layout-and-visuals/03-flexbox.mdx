@@ -1,0 +1,242 @@
+---
+title: "Flexbox"
+slug: "flexbox"
+module: "Layout & Visuals"
+moduleSlug: "layout-and-visuals"
+course: "CSS Essentials"
+courseSlug: "css-essentials"
+order: 10
+estimatedMinutes: 9
+---
+
+# Flexbox
+
+<Hook>
+You've been fighting the default vertical flow — stacking elements on top of each other. What if you could simply tell the browser "put these items side-by-side" or "center this thing perfectly in the middle of the page"? That's Flexbox. Two words — `display: flex` — and everything changes.
+</Hook>
+
+## The Concept
+
+Flexbox is a **layout system** designed for arranging items in a row or column with powerful alignment controls. Before Flexbox, developers used hacky workarounds involving floats and clearfixes. Now? It's clean, intuitive, and the backbone of modern CSS layouts.
+
+Here's the **key mental model**: a **flex container** controls how its **direct children** (called flex items) are positioned. You don't style the children individually — you tell the parent *how to arrange them*.
+
+Think of it like a shelf. The shelf (container) decides whether books (items) line up left-to-right, are spread out evenly, or are centered. The books just sit where the shelf tells them to.
+
+**`display: flex`** turns any element into a flex container. Its children immediately line up in a **row** — horizontal, left to right. That one declaration alone can transform a vertical stack into a horizontal layout.
+
+**`flex-direction`** controls the direction. The default is `row` (horizontal). Change it to `column` and items stack vertically — but now with the power of Flexbox alignment. You can also use `row-reverse` and `column-reverse` to flip the order.
+
+**`justify-content`** controls alignment along the **main axis** (horizontal for rows). This is the big one:
+- `flex-start` — items huddle at the start (default)
+- `flex-end` — items cluster at the end
+- `center` — items group in the center
+- `space-between` — first item at the start, last at the end, equal space in between
+- `space-around` — equal space around each item
+- `space-evenly` — truly equal space between and around every item
+
+**`align-items`** controls alignment along the **cross axis** (vertical for rows):
+- `stretch` — items stretch to fill the container height (default)
+- `flex-start` — items align to the top
+- `flex-end` — items align to the bottom
+- `center` — items are vertically centered
+
+**`gap`** adds space **between** flex items. Way cleaner than adding margins to individual items. `gap: 20px` puts 20 pixels between each child — no extra space on the outer edges.
+
+Here's what makes Flexbox magical for real projects. Your **navigation bar**? One line:
+
+```css
+nav { display: flex; justify-content: space-between; align-items: center; }
+```
+
+Your **hero section** centered vertically and horizontally?
+
+```css
+header { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+```
+
+Flexbox is probably the most important CSS concept you'll learn. Master it, and layout problems stop being problems.
+
+## The Syntax
+
+```html
+<!-- Navigation: horizontal layout with space-between -->
+<nav>
+  <span class="logo">Jane Writer</span>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#work">Work</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- Hero: centered column layout -->
+<header>
+  <h1>Words That Work</h1>
+  <p>Freelance copywriter helping brands tell their story.</p>
+  <a href="#contact" class="cta">Let's Talk</a>
+</header>
+
+<style>
+  /* Navigation — items spread across the full width */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #1a1a2e;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 20px;
+  }
+
+  nav a {
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+  .logo {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 20px;
+  }
+
+  /* Hero — content centered in a column */
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 20px;
+  }
+</style>
+```
+
+The `nav` uses `flex` with `space-between` to push the logo to the left and the links to the right. Inside `.nav-links`, another `flex` container with `gap: 20px` spaces the links evenly. The `header` uses `flex-direction: column` so items stack vertically, but `align-items: center` keeps everything centered horizontally.
+
+## Try It Yourself
+
+<CodeExercise language="html">
+<Instructions>
+Build a navigation bar using Flexbox:
+1. Add `display: flex` to the `nav` rule to activate Flexbox.
+2. Add `justify-content: space-between` to push the logo and links apart.
+3. Add `align-items: center` to vertically center everything in the nav.
+</Instructions>
+
+<StartingCode>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Copywriter Landing Page</title>
+  <style>
+    body {
+      font-family: Georgia, serif;
+      margin: 0;
+      color: #1a1a2e;
+    }
+
+    nav {
+      padding: 20px 40px;
+      background-color: #1a1a2e;
+      /* Add your Flexbox styles below */
+
+    }
+
+    .logo {
+      color: #ffffff;
+      font-weight: bold;
+      font-size: 22px;
+    }
+
+    .nav-links a {
+      color: #cccccc;
+      text-decoration: none;
+      margin-left: 20px;
+    }
+
+    .nav-links a:hover {
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <span class="logo">Jane Writer</span>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+</body>
+</html>
+</StartingCode>
+
+<Solution>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Copywriter Landing Page</title>
+  <style>
+    body {
+      font-family: Georgia, serif;
+      margin: 0;
+      color: #1a1a2e;
+    }
+
+    nav {
+      padding: 20px 40px;
+      background-color: #1a1a2e;
+      /* Add your Flexbox styles below */
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      color: #ffffff;
+      font-weight: bold;
+      font-size: 22px;
+    }
+
+    .nav-links a {
+      color: #cccccc;
+      text-decoration: none;
+      margin-left: 20px;
+    }
+
+    .nav-links a:hover {
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <span class="logo">Jane Writer</span>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+</body>
+</html>
+</Solution>
+
+<Validation>
+The navigation bar should show "Jane Writer" on the left and the four links on the right, with space between them. Everything should be vertically centered within the dark nav bar. This is the classic professional navigation layout.
+</Validation>
+</CodeExercise>
+
+## Recap
+
+- ✅ **`display: flex`** turns any element into a flex container — its children arrange automatically in a row.
+- ✅ **`justify-content`** controls the main axis (horizontal by default), **`align-items`** controls the cross axis (vertical by default).
+- ✅ **`gap`** adds clean spacing between flex items — no margin hacks needed.

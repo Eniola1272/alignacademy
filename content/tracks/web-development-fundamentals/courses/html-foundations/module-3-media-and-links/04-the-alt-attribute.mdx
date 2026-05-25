@@ -1,0 +1,77 @@
+---
+title: "The Alt Attribute"
+slug: "the-alt-attribute"
+module: "Media & Links"
+moduleSlug: "media-and-links"
+course: "HTML Foundations"
+courseSlug: "html-foundations"
+order: 11
+estimatedMinutes: 6
+---
+
+# The Alt Attribute
+
+<Hook>
+Close your eyes and try to browse a website. That's the reality for millions of people who use screen readers every day. The `alt` attribute is your way of making images accessible to everyone — and it's also how Google "sees" your images. Two audiences, one small attribute.
+</Hook>
+
+## The Concept
+
+You've already learned that the `alt` attribute provides a text description for an image. But writing *good* alt text is a skill. Let's go deeper.
+
+**The golden rule:** Describe what the image **shows**, not what it **is**.
+
+- 🚫 **Bad:** `alt="image"` or `alt="photo"`
+- 🚫 **Bad:** `alt="dog"`
+- ✅ **Good:** `alt="A golden retriever playing fetch in a sunny park"`
+
+Be **specific and concise**. Paint a quick picture with words. Someone who can't see the image should understand what they're missing.
+
+**Never start with "image of" or "picture of."** Screen readers already announce the element as an image before reading the alt text. Writing `alt="Image of a sunset"` would make the screen reader say *"Image: Image of a sunset"* — redundant and awkward.
+
+**Decorative images** are a special case. If an image is purely visual decoration — a divider line, a background shape, a design flourish — it adds no meaningful information. For these, use an **empty alt attribute**: `alt=""`. This tells screen readers to skip the image entirely, so they don't clutter the experience with descriptions of meaningless graphics.
+
+Alt text also shows up when **images fail to load** — maybe the URL is broken or the user has a slow connection. Instead of a blank space, they see your description. It's a helpful fallback.
+
+And here's a bonus: **Google Image Search uses alt text** to understand and index your images. Good alt text means your images can appear in search results. That's better **SEO** (Search Engine Optimization) for free.
+
+## The Syntax
+
+```html
+<!-- ✅ Good alt text — specific and descriptive -->
+<img src="photo.jpg" alt="A golden retriever playing fetch in a sunny park">
+
+<!-- 🚫 Bad alt text — vague and unhelpful -->
+<img src="photo.jpg" alt="image">
+
+<!-- ✅ Decorative image — empty alt to skip it -->
+<img src="divider-line.png" alt="">
+```
+
+Notice how all three use the same `<img>` tag structure — the only difference is what's inside the `alt` attribute. That small change completely changes how screen readers, search engines, and broken-image fallbacks handle the image.
+
+## Try It Yourself
+
+<CodeExercise language="html">
+<Instructions>
+This image has a lazy `alt` attribute that just says "image." Rewrite the `alt` text to be descriptive. The image shows **a laptop on a wooden desk with a coffee cup beside it**.
+</Instructions>
+
+<StartingCode>
+<img src="https://via.placeholder.com/400x300" alt="image">
+</StartingCode>
+
+<Solution>
+<img src="https://via.placeholder.com/400x300" alt="A laptop on a wooden desk with a coffee cup beside it">
+</Solution>
+
+<Validation>
+The `alt` attribute should now contain a specific, descriptive phrase like "A laptop on a wooden desk with a coffee cup beside it" instead of the generic word "image."
+</Validation>
+</CodeExercise>
+
+## Recap
+
+- ✅ Good alt text describes what the image shows — be specific and concise
+- ✅ Use empty alt (`alt=""`) for decorative images that add no information
+- ✅ Alt text helps screen readers, broken image fallbacks, and Google SEO — three wins in one

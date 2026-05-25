@@ -1,0 +1,117 @@
+---
+title: "What is CSS?"
+slug: "what-is-css"
+module: "Your First Styles"
+moduleSlug: "your-first-styles"
+course: "CSS Essentials"
+courseSlug: "css-essentials"
+order: 1
+estimatedMinutes: 6
+---
+
+# What is CSS?
+
+<Hook>
+Remember the landing page you built in HTML Foundations? It works — but it looks like a plain document from the 1990s. Black text, white background, Times New Roman. CSS is what transforms that skeleton into something people *actually* want to look at. In the next 6 minutes, you'll add your very first style and watch the page come alive.
+</Hook>
+
+## The Concept
+
+**CSS** stands for **Cascading Style Sheets**. If HTML is the skeleton of a webpage, CSS is the skin, the clothes, and the makeup. It controls how HTML elements **look** — their colors, fonts, sizes, spacing, and layout.
+
+Without CSS, every website would look like a plain text document. With CSS, you get the beautiful, colorful, modern web you use every day.
+
+There are **three ways** to add CSS to your HTML:
+
+1. **Inline** — A `style` attribute directly on an element: `<h1 style="color: blue;">`. Quick but messy.
+2. **Internal** — A `<style>` tag inside the `<head>` of your HTML. Great for single-page projects.
+3. **External** — A separate `.css` file linked with a `<link>` tag. The professional standard.
+
+For this course, we'll start with **internal stylesheets** (a `<style>` tag in the `<head>`) and move to external files later.
+
+So what does **"cascading"** mean? When multiple styles try to change the same element, CSS has rules for deciding which style wins. Think of it like a waterfall — styles flow down, and the most specific one at the bottom takes priority. We'll explore this more soon.
+
+*Fun fact: CSS was created in 1996 by Håkon Wium Lie to separate content (HTML) from presentation (CSS). Before that, styling was crammed right into the HTML — and it was chaos.*
+
+## The Syntax
+
+Every CSS rule follows the same pattern: **selector**, **property**, and **value**.
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My First CSS</title>
+    <style>
+        /* The selector targets WHICH element to style */
+        /* The property says WHAT to change */
+        /* The value says HOW to change it */
+
+        body {
+            background-color: #f0ece2;  /* A warm light gray */
+        }
+
+        h1 {
+            color: #1a1a2e;  /* A deep navy blue */
+        }
+    </style>
+</head>
+<body>
+    <h1>Hello, CSS!</h1>
+    <p>This page has style now.</p>
+</body>
+</html>
+```
+
+Here's how to read that CSS: *"Select every `body` element and set its background color to warm gray. Then select every `h1` element and set its text color to dark navy."*
+
+Notice the pattern: `selector { property: value; }` — curly braces wrap the rules, a colon separates the property from its value, and a semicolon ends each line.
+
+## Try It Yourself
+
+<CodeExercise language="html">
+<Instructions>
+Add a `<style>` tag inside the `<head>` section. Inside it, write a CSS rule that changes the `h1` text color to `#1a1a2e` (a dark navy blue).
+</Instructions>
+
+<StartingCode>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My First CSS</title>
+</head>
+<body>
+    <h1>Hello, CSS!</h1>
+    <p>This is my first styled page.</p>
+</body>
+</html>
+</StartingCode>
+
+<Solution>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My First CSS</title>
+    <style>
+        h1 {
+            color: #1a1a2e;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hello, CSS!</h1>
+    <p>This is my first styled page.</p>
+</body>
+</html>
+</Solution>
+
+<Validation>
+The h1 "Hello, CSS!" should appear in a dark navy blue color instead of the default black. You should see a `<style>` tag inside the `<head>` with a CSS rule targeting `h1`.
+</Validation>
+</CodeExercise>
+
+## Recap
+
+- ✅ CSS controls how HTML elements look — colors, fonts, sizes, and layout
+- ✅ You add CSS with a `<style>` tag in the `<head>` (this is called an internal stylesheet)
+- ✅ CSS rules follow a pattern: `selector { property: value; }`

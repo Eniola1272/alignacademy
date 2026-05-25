@@ -1,0 +1,192 @@
+---
+title: "Backgrounds & Gradients"
+slug: "backgrounds-and-gradients"
+module: "Layout & Visuals"
+moduleSlug: "layout-and-visuals"
+course: "CSS Essentials"
+courseSlug: "css-essentials"
+order: 11
+estimatedMinutes: 7
+---
+
+# Backgrounds & Gradients
+
+<Hook>
+The hero section of a landing page is where visitors decide in 3 seconds whether to stay or leave. A plain white background says nothing. A bold color or a smooth gradient says "I'm a professional who takes their brand seriously." Let's make your hero section impossible to ignore.
+</Hook>
+
+## The Concept
+
+You already know **`background-color`** from the colors lesson — it fills an element with a solid color. But backgrounds can do so much more.
+
+**`background-image: url('...')`** loads an image as the background of an element. On its own, the image will tile and repeat to fill the space — probably not what you want. That's why it's almost always paired with these three companions:
+
+- **`background-size: cover`** — scales the image to fill the entire element, cropping edges if needed. No gaps, no white space.
+- **`background-position: center`** — centers the image so the most important part stays visible even when cropping occurs.
+- **`background-repeat: no-repeat`** — stops the image from tiling. One image. That's it.
+
+But here's where it gets exciting: **gradients**. CSS can generate beautiful color blends **without any image files**. No downloads. No loading time. Pure code.
+
+**`linear-gradient(direction, color1, color2)`** creates a smooth transition between colors. The direction tells the gradient which way to flow:
+
+- `to right` — left to right
+- `to bottom` — top to bottom (default)
+- `to bottom right` — diagonal
+- `135deg` — precise angle control (135° goes from top-left to bottom-right)
+
+You can use **two or more color stops** for richer blends. `linear-gradient(135deg, #667eea, #764ba2)` creates a popular purple-violet gradient. Adding a third stop like `linear-gradient(135deg, #0f0c29, #302b63, #24243e)` builds a deep, premium dark gradient — perfect for a professional landing page.
+
+One powerful technique: **combining a gradient with an image**. Layering a semi-transparent dark gradient over a photo makes text readable on busy backgrounds:
+
+```css
+background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('photo.jpg');
+```
+
+The gradient sits *on top* of the image, acting as a tinted overlay. Dark enough for white text to pop, but the image still shows through.
+
+For your copywriter's hero section, a bold gradient sets the tone. Something dark and premium like `linear-gradient(135deg, #1a1a2e, #16213e, #0f3460)` says "serious professional." Something warm like `linear-gradient(135deg, #f093fb, #f5576c)` says "bold and creative." The gradient *is* the brand statement.
+
+## The Syntax
+
+```html
+<header>
+  <h1>Words That Work</h1>
+  <p>Freelance copywriter helping brands tell their story.</p>
+  <a href="#contact" class="cta">Let's Talk</a>
+</header>
+
+<style>
+  header {
+    /* The gradient — dark, rich, and professional */
+    background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+
+    /* White text so it pops against the dark background */
+    color: #ffffff;
+
+    /* Generous padding creates a tall, dramatic hero area */
+    padding: 100px 20px;
+
+    /* Center all text content */
+    text-align: center;
+  }
+
+  header h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+  }
+
+  header p {
+    font-size: 20px;
+    opacity: 0.85;
+  }
+
+  .cta {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 14px 32px;
+    background-color: #e94560;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 18px;
+  }
+</style>
+```
+
+The `background` shorthand accepts a `linear-gradient()` just like it would accept a color or image. The three color stops — `#1a1a2e`, `#16213e`, `#0f3460` — blend from a very dark purple to a deep navy blue. Combined with white text and generous padding, this creates a hero section that commands attention.
+
+## Try It Yourself
+
+<CodeExercise language="html">
+<Instructions>
+Style the hero section with a gradient background:
+1. Set `background` to `linear-gradient(135deg, #1a1a2e, #16213e, #0f3460)`.
+2. Set `color` to `#ffffff` so the text is readable.
+3. Add `text-align: center` and `padding: 80px 20px` to complete the look.
+</Instructions>
+
+<StartingCode>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Copywriter Landing Page</title>
+  <style>
+    body {
+      font-family: Georgia, serif;
+      margin: 0;
+    }
+
+    header {
+      /* Add your styles below */
+
+    }
+
+    header h1 {
+      font-size: 44px;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Words That Work</h1>
+    <p>Freelance copywriter helping brands find their voice and tell stories that sell.</p>
+  </header>
+</body>
+</html>
+</StartingCode>
+
+<Solution>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Copywriter Landing Page</title>
+  <style>
+    body {
+      font-family: Georgia, serif;
+      margin: 0;
+    }
+
+    header {
+      /* Add your styles below */
+      background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+      color: #ffffff;
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    header h1 {
+      font-size: 44px;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Words That Work</h1>
+    <p>Freelance copywriter helping brands find their voice and tell stories that sell.</p>
+  </header>
+</body>
+</html>
+</Solution>
+
+<Validation>
+The header should transform from a plain white section into a dramatic dark gradient hero. The background should smoothly blend from deep purple to navy blue at a diagonal angle. The heading and paragraph text should be white and centered, with generous padding creating a tall, impactful hero area.
+</Validation>
+</CodeExercise>
+
+## Recap
+
+- ✅ **`background-color`** handles solid fills, **`background-image`** loads images — use `background-size: cover` for full-area coverage.
+- ✅ **`linear-gradient`** creates smooth color blends — perfect for hero sections and brand statements.
+- ✅ Gradients are **pure CSS** — no image files needed, instant loading, infinitely customizable.

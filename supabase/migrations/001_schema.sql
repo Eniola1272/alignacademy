@@ -16,20 +16,6 @@ begin
 end;
 $$;
 
--- Admin check — security definer so it bypasses RLS (avoids infinite recursion)
-create or replace function public.is_admin()
-returns boolean
-language sql
-security definer
-stable
-set search_path = ''
-as $$
-  select exists (
-    select 1 from public.users
-    where id = auth.uid() and role = 'admin'
-  );
-$$;
-
 -- ── Tracks ───────────────────────────────────────────────────
 
 create table if not exists public.tracks (
@@ -135,6 +121,22 @@ create or replace trigger on_auth_user_email_updated
 create or replace trigger users_updated_at
   before update on public.users
   for each row execute function public.update_updated_at();
+
+-- Admin check — security definer so it bypasses RLS (avoids infinite recursion)
+-- Defined here (after public.users) because SQL-language functions are
+-- validated at creation time; referencing the table before it exists fails.
+create or replace function public.is_admin()
+returns boolean
+language sql
+security definer
+stable
+set search_path = ''
+as $$
+  select exists (
+    select 1 from public.users
+    where id = auth.uid() and role = 'admin'
+  );
+$$;
 
 -- ── Enrollments ──────────────────────────────────────────────
 

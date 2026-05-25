@@ -1,0 +1,77 @@
+---
+title: "Lists (Unordered)"
+slug: "lists-unordered"
+module: "Text & Structure"
+moduleSlug: "text-and-structure"
+course: "HTML Foundations"
+courseSlug: "html-foundations"
+order: 6
+estimatedMinutes: 6
+---
+
+# Lists (Unordered)
+
+<Hook>
+Shopping lists, ingredient lists, feature lists, navigation menus — the web is full of lists. And HTML has a dedicated way to create them that's way better than just typing dashes and line breaks. Let's build your first proper HTML list.
+</Hook>
+
+## The Concept
+
+An unordered list in HTML uses two tags working together:
+
+**`<ul>`** is the **container** — it wraps the entire list. Think of it as the piece of paper your shopping list is written on. The name stands for "unordered list."
+
+**`<li>`** is each **list item** — every entry gets its own `<li>` tag. Think of each `<li>` as one line on your shopping list.
+
+"Unordered" means the **order doesn't matter**. Eggs before milk? Milk before eggs? It doesn't change anything. That's what makes it perfect for grocery lists, feature lists, or menus.
+
+The browser automatically adds **bullet points** in front of each item. You don't need to type bullets or dashes yourself — HTML handles it for you.
+
+Lists can even be **nested** — a list inside a list. This is great for subcategories, like grouping fruits and vegetables under separate sections of your grocery list.
+
+Using proper list tags also helps with **accessibility**. When a screen reader encounters a `<ul>`, it announces something like *"list with 3 items."* This helps visually impaired users understand the structure of your content and navigate it efficiently.
+
+## The Syntax
+
+```html
+<ul>
+  <li>Eggs</li>
+  <li>Bread</li>
+  <li>Butter</li>
+  <li>Orange juice</li>
+</ul>
+```
+
+The `<ul>` tag opens and closes around all the items. Each item is wrapped in its own `<li>` tag. The browser will display this as a neat bulleted list — no extra work needed.
+
+## Try It Yourself
+
+<CodeExercise language="html">
+<Instructions>
+Add three grocery items to the empty list below. Each item should be wrapped in its own `<li>` tag. You can pick any three items you'd actually buy!
+</Instructions>
+
+<StartingCode>
+<ul>
+
+</ul>
+</StartingCode>
+
+<Solution>
+<ul>
+  <li>Eggs</li>
+  <li>Bread</li>
+  <li>Milk</li>
+</ul>
+</Solution>
+
+<Validation>
+The page should show three bulleted items inside the list. Any three items are fine — the important thing is that each one is wrapped in its own `<li>` tag inside the `<ul>`.
+</Validation>
+</CodeExercise>
+
+## Recap
+
+- ✅ `<ul>` creates an unordered (bulleted) list container
+- ✅ Each item inside goes in its own `<li>` tag
+- ✅ Use unordered lists when the order of items doesn't matter
