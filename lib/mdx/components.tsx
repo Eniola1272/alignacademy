@@ -1,12 +1,16 @@
 /**
  * Custom MDX component map.
- * These are passed to compileMDX and replace the JSX tags in lesson files.
+ * Passed to compileMDX — these replace the JSX tags in lesson files.
  *
- * Phase 3: CodeExercise is a static read-only display.
- * Phase 4: Replace with the fully interactive Monaco-based version.
+ * CodeExercise is now fully interactive (Monaco + live HTML preview).
+ * StartingCode and Solution are no longer used as children — the preprocessor
+ * hoists their code up to CodeExercise as startingCode/solutionCode props.
+ * They are kept here as no-ops so old MDX files that still include them
+ * won't crash during any transitional period.
  */
 
 import type { ReactNode } from "react";
+import { CodeExercise } from "@/components/course/code-exercise";
 
 // ── <Hook> ────────────────────────────────────────────────────────────────────
 
@@ -18,85 +22,49 @@ export function Hook({ children }: { children: ReactNode }) {
   );
 }
 
-// ── <CodeExercise> and sub-components ────────────────────────────────────────
-
-interface CodeExerciseProps {
-  language: string;
-  children: ReactNode;
-}
-
-export function CodeExercise({ language, children }: CodeExerciseProps) {
-  return (
-    <div
-      className="not-prose my-8 overflow-hidden rounded-lg border border-border"
-      data-language={language}
-    >
-      <div className="flex items-center justify-between border-b border-border bg-muted/40 px-4 py-2.5">
-        <span className="text-xs font-mono text-muted-foreground">
-          Exercise · {language}
-        </span>
-        <span className="rounded-full bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary">
-          Phase 4: interactive editor coming soon
-        </span>
-      </div>
-      <div className="divide-y divide-border">{children}</div>
-    </div>
-  );
-}
+// ── <Instructions> ────────────────────────────────────────────────────────────
+// Rendered inside CodeExercise as part of its children.
 
 export function Instructions({ children }: { children: ReactNode }) {
   return (
-    <div className="px-4 py-4">
-      <p className="mb-1.5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+    <div>
+      <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
         Instructions
       </p>
-      <div className="text-sm leading-relaxed text-foreground">{children}</div>
+      <div className="text-sm leading-relaxed text-foreground [&_ol]:list-decimal [&_ol]:pl-5 [&_li]:mt-1">
+        {children}
+      </div>
     </div>
   );
 }
+
+// ── <Validation> ──────────────────────────────────────────────────────────────
+// Rendered inside CodeExercise as part of its children.
+
+export function Validation({ children }: { children: ReactNode }) {
+  return (
+    <div className="mt-3 rounded-md bg-muted/50 px-4 py-3 text-xs text-muted-foreground">
+      <span className="font-semibold text-foreground">Passes when: </span>
+      {children}
+    </div>
+  );
+}
+
+// ── <StartingCode> / <Solution> ───────────────────────────────────────────────
+// These are no longer rendered as children of CodeExercise — the preprocessor
+// moves their content to props. Kept here as no-ops just in case.
 
 interface CodePropComponent {
   code?: string;
   children?: ReactNode;
 }
 
-export function StartingCode({ code, children }: CodePropComponent) {
-  const content = code ?? (typeof children === "string" ? children : "");
-  return (
-    <div className="px-4 py-4">
-      <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-        Starting code
-      </p>
-      <pre className="overflow-x-auto rounded-md bg-background p-4 text-xs leading-relaxed font-mono border border-border">
-        <code>{content}</code>
-      </pre>
-    </div>
-  );
+export function StartingCode(_props: CodePropComponent) {
+  return null;
 }
 
-export function Solution({ code, children }: CodePropComponent) {
-  const content = code ?? (typeof children === "string" ? children : "");
-  return (
-    <details className="px-4 py-4">
-      <summary className="cursor-pointer text-xs font-semibold uppercase tracking-wider text-muted-foreground hover:text-foreground transition-colors">
-        Show solution ▸
-      </summary>
-      <pre className="mt-3 overflow-x-auto rounded-md bg-background p-4 text-xs leading-relaxed font-mono border border-border">
-        <code>{content}</code>
-      </pre>
-    </details>
-  );
-}
-
-export function Validation({ children }: { children: ReactNode }) {
-  return (
-    <div className="bg-muted/30 px-4 py-3">
-      <p className="text-xs text-muted-foreground">
-        <span className="font-semibold text-foreground">Passes when: </span>
-        {children}
-      </p>
-    </div>
-  );
+export function Solution(_props: CodePropComponent) {
+  return null;
 }
 
 // ── Component map ─────────────────────────────────────────────────────────────
@@ -105,7 +73,7 @@ export const MDX_COMPONENTS = {
   Hook,
   CodeExercise,
   Instructions,
+  Validation,
   StartingCode,
   Solution,
-  Validation,
 };

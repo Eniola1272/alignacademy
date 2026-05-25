@@ -5,45 +5,89 @@
  * (including <!DOCTYPE html>) which are not valid JSX and would crash
  * the MDX compiler.
  *
- * Solution: extract their raw content and convert to a `code` string prop
- * before the compiler ever sees them.
+ * Solution: extract their raw content and hoist them onto <CodeExercise>
+ * as `startingCode` and `solutionCode` string props, then remove the
+ * child components. <Instructions> and <Validation> stay as children
+ * (they contain plain text and compile fine).
  *
  * Before:
+ *   <CodeExercise language="html">
+ *   <Instructions>…</Instructions>
  *   <StartingCode>
  *   <!DOCTYPE html>
- *   <html>...
+ *   …
  *   </StartingCode>
+ *   <Solution>
+ *   <!DOCTYPE html>
+ *   …
+ *   </Solution>
+ *   <Validation>…</Validation>
+ *   </CodeExercise>
  *
  * After:
- *   <StartingCode code={`<!DOCTYPE html>\n<html>...`} />
+ *   <CodeExercise language="html" startingCode={`…`} solutionCode={`…`}>
+ *   <Instructions>…</Instructions>
+ *   <Validation>…</Validation>
+ *   </CodeExercise>
  */
 
-function extractComponentContent(
+function escapeForTemplateLiteral(content: string): string {
+  return content
+    .replace(/\\/g, "\\\\")
+    .replace(/`/g, "\\`")
+    .replace(/\$\{/g, "\\${");
+}
+
+/**
+ * Extract the inner text of one named block and return [escaped, sourceWithoutBlock].
+ * Matches:  <ComponentName>\n{content}\n</ComponentName>
+ */
+function extractBlock(
   source: string,
   componentName: string
-): string {
-  const openTag = `<${componentName}>`;
-  const closeTag = `</${componentName}>`;
-
-  return source.replace(
-    new RegExp(`${openTag}\\n([\\s\\S]*?)\\n${closeTag}`, "g"),
-    (_, content: string) => {
-      // Escape backticks and template literal interpolations
-      const escaped = content
-        .replace(/\\/g, "\\\\")
-        .replace(/`/g, "\\`")
-        .replace(/\$\{/g, "\\${");
-
-      return `<${componentName} code={\`${escaped}\`} />`;
-    }
+): { escaped: string; source: string } {
+  const pattern = new RegExp(
+    `<${componentName}>\\n([\\s\\S]*?)\\n<\\/${componentName}>`,
+    "g"
   );
+
+  let escaped = "";
+  const cleaned = source.replace(pattern, (_, content: string) => {
+    escaped = escapeForTemplateLiteral(content);
+    return ""; // remove the block from source
+  });
+
+  return { escaped, source: cleaned };
 }
 
 export function preprocessMdx(source: string): string {
-  let processed = source;
-  // Only StartingCode and Solution contain raw code that breaks the JSX parser.
-  // Instructions and Validation contain plain text and are fine as children.
-  processed = extractComponentContent(processed, "StartingCode");
-  processed = extractComponentContent(processed, "Solution");
-  return processed;
+  // Match each <CodeExercise …>…</CodeExercise> block and transform it.
+  return source.replace(
+    /(<CodeExercise[^>]*>)([\s\S]*?)(<\/CodeExercise>)/g,
+    (_, openTag: string, body: string, closeTag: string) => {
+      // Hoist StartingCode and Solution into props on the opening tag.
+      const { escaped: startingCode, source: body1 } = extractBlock(
+        body,
+        "StartingCode"
+      );
+      const { escaped: solutionCode, source: body2 } = extractBlock(
+        body1,
+        "Solution"
+      );
+
+      // Strip the trailing > so we can append new props.
+      const tagBase = openTag.replace(/>$/, "");
+
+      const newOpenTag =
+        `${tagBase}` +
+        (startingCode ? ` startingCode={\`${startingCode}\`}` : "") +
+        (solutionCode ? ` solutionCode={\`${solutionCode}\`}` : "") +
+        `>`;
+
+      // Collapse the whitespace left behind after removing the blocks.
+      const trimmedBody = body2.replace(/\n{3,}/g, "\n\n");
+
+      return `${newOpenTag}${trimmedBody}${closeTag}`;
+    }
+  );
 }
