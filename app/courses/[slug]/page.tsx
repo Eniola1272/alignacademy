@@ -22,7 +22,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const course = getCourse(slug);
   if (!course) return {};
-  return { title: course.title, description: course.description };
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "";
+  return {
+    title: course.title,
+    description: course.description,
+    openGraph: {
+      title: `${course.title} — Align Academy`,
+      description: course.description,
+      url: `${appUrl}/courses/${slug}`,
+      type: "website",
+    },
+    twitter: { card: "summary", title: course.title, description: course.description },
+  };
 }
 
 // ── Certificate status ────────────────────────────────────────────────────────

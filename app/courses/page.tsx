@@ -2,32 +2,38 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Clock, BookOpen } from "lucide-react";
 import { getAllCourses } from "@/lib/content/loader";
+import { createClient } from "@/lib/supabase/server";
 import { Badge } from "@/components/ui/badge";
-import { cn } from "@/lib/utils";
-import { buttonVariants } from "@/components/ui/button";
 
 export const metadata: Metadata = {
   title: "Courses",
-  description: "Browse all Align Academy courses — free to start.",
-};
-
-const DIFFICULTY_LABEL: Record<string, string> = {
-  beginner: "Beginner",
-  intermediate: "Intermediate",
-  advanced: "Advanced",
+  description: "Browse all Align Academy courses — free to start, earn a verified certificate when you finish.",
+  openGraph: {
+    title: "Courses — Align Academy",
+    description: "Free courses in HTML, CSS, JavaScript, and Python. Earn verified certificates.",
+    type: "website",
+  },
 };
 
 const LANGUAGE_LABEL: Record<string, string> = {
-  html: "HTML",
-  css: "CSS",
-  sass: "Sass",
-  javascript: "JavaScript",
-  typescript: "TypeScript",
-  python: "Python",
+  html: "HTML", css: "CSS", sass: "Sass",
+  javascript: "JavaScript", typescript: "TypeScript", python: "Python",
 };
 
-export default function CoursesPage() {
-  const courses = getAllCourses();
+export default async function CoursesPage() {
+  // Merge file-based course data with DB status (admin-controlled via track builder)
+  const supabase = await createClient();
+  const { data: dbCourses } = await supabase
+    .from("courses")
+    .select("slug, status");
+
+  const dbStatusMap = new Map(dbCourses?.map((c) => [c.slug, c.status]) ?? []);
+
+  const courses = getAllCourses().filter((course) => {
+    const dbStatus = dbStatusMap.get(course.slug);
+    // If DB has a status, use it; otherwise fall back to "published" (content is in the loader)
+    return (dbStatus ?? "published") === "published";
+  });
 
   return (
     <div className="container max-w-screen-xl mx-auto px-4 py-16">
@@ -50,18 +56,15 @@ export default function CoursesPage() {
                 {LANGUAGE_LABEL[course.language] ?? course.language}
               </Badge>
               <span className="text-xs text-muted-foreground capitalize">
-                {DIFFICULTY_LABEL[course.difficulty] ?? course.difficulty}
+                {course.difficulty}
               </span>
             </div>
-
             <h2 className="font-semibold text-base mb-2 group-hover:text-primary transition-colors">
               {course.title}
             </h2>
-
             <p className="text-sm text-muted-foreground leading-relaxed flex-1 mb-5">
               {course.description}
             </p>
-
             <div className="flex items-center gap-4 text-xs text-muted-foreground mt-auto pt-4 border-t border-border/60">
               <span className="flex items-center gap-1.5">
                 <BookOpen className="h-3.5 w-3.5" />

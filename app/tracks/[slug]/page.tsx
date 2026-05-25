@@ -22,7 +22,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const track = getTrack(slug);
   if (!track) return {};
-  return { title: track.title, description: track.description };
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "";
+  return {
+    title: track.title,
+    description: track.description,
+    openGraph: {
+      title: `${track.title} — Align Academy`,
+      description: track.description,
+      url: `${appUrl}/tracks/${slug}`,
+      type: "website",
+    },
+    twitter: { card: "summary", title: track.title, description: track.description },
+  };
 }
 
 // ── Certificate status ────────────────────────────────────────────────────────
@@ -91,13 +102,28 @@ export default async function TrackDetailPage({ params }: Props) {
   const track = getTrack(slug);
   if (!track) notFound();
 
+  // Merge DB course status so the track builder changes are reflected here
+  const supabaseForStatus = await createClient();
+  const { data: dbCourses } = await supabaseForStatus
+    .from("courses")
+    .select("slug, status");
+  const dbStatusMap = new Map(dbCourses?.map((c) => [c.slug, c.status]) ?? []);
+
+  const trackWithDbStatus = {
+    ...track,
+    courses: track.courses.map((c) => ({
+      ...c,
+      status: dbStatusMap.get(c.courseSlug) ?? c.status,
+    })),
+  };
+
   // Load published course details
-  const publishedCourses = track.courses
+  const publishedCourses = trackWithDbStatus.courses
     .filter((c) => c.status === "published")
     .map((c) => ({ ...c, detail: getCourse(c.courseSlug) }))
     .filter((c) => c.detail !== null);
 
-  const comingSoon = track.courses.filter((c) => c.status !== "published");
+  const comingSoon = trackWithDbStatus.courses.filter((c) => c.status !== "published");
 
   const firstCourse = publishedCourses[0]?.detail;
   const firstLesson = firstCourse?.modules[0]?.lessons[0];

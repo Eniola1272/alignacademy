@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Clock, BookOpen, ArrowRight } from "lucide-react";
 import { getAllTracks } from "@/lib/content/loader";
+import { createClient } from "@/lib/supabase/server";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
@@ -9,10 +10,26 @@ import { buttonVariants } from "@/components/ui/button";
 export const metadata: Metadata = {
   title: "Tracks",
   description: "Structured learning tracks — curated course sequences from beginner to capable.",
+  openGraph: {
+    title: "Learning Tracks — Align Academy",
+    description: "Structured course sequences from beginner to capable. One certificate per track.",
+    type: "website",
+  },
 };
 
-export default function TracksPage() {
-  const tracks = getAllTracks();
+export default async function TracksPage() {
+  // Merge DB course status so the track builder changes are reflected here
+  const supabase = await createClient();
+  const { data: dbCourses } = await supabase.from("courses").select("slug, status");
+  const dbStatusMap = new Map(dbCourses?.map((c) => [c.slug, c.status]) ?? []);
+
+  const tracks = getAllTracks().map((track) => ({
+    ...track,
+    courses: track.courses.map((c) => ({
+      ...c,
+      status: dbStatusMap.get(c.courseSlug) ?? c.status,
+    })),
+  }));
 
   return (
     <div className="container max-w-screen-xl mx-auto px-4 py-16">
